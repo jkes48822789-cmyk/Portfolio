@@ -52,7 +52,7 @@
     <!-- 導覽列 -->
     <nav class="sticky top-0 z-50 bg-brand-beige/80 backdrop-blur-md border-b border-brand-accent/10">
         <div class="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
-            <a href="#" class="font-bold text-lg tracking-wider text-brand-accent">YEH CHI-CHANG</a>
+            <a href="#" class="font-bold text-lg tracking-wider text-brand-accent">YEE CHI-CHANG</a>
             <div class="flex space-x-6 text-sm font-medium">
                 <a href="#about" class="hover:text-brand-accent transition-colors duration-200">關於我</a>
                 <a href="#skills" class="hover:text-brand-accent transition-colors duration-200">專業證照</a>
@@ -66,17 +66,18 @@
     <section class="max-w-4xl mx-auto px-6 py-12 md:py-20 flex flex-col items-center text-center">
         <!-- 個人頭像容器 -->
         <div class="relative w-36 h-36 md:w-40 md:h-40 rounded-full p-1.5 bg-gradient-to-tr from-brand-accent to-brand-accent/30 premium-shadow mb-6 group overflow-hidden">
-            <!-- 實體照片讀取 -->
+            <!-- 實體照片讀取（透過 JS 初始化並加入 TimeStamp 繞過快取） -->
             <img 
-                src="profile2.jpg" 
-                alt="葉奇昌" 
                 id="avatar"
-                class="w-full h-full object-cover rounded-full transition-transform duration-500 group-hover:scale-105"
+                alt="葉奇昌" 
+                class="w-full h-full object-cover rounded-full transition-transform duration-500 group-hover:scale-105 opacity-0 transition-opacity duration-300"
                 onerror="handleAvatarError()"
+                onload="handleAvatarLoad()"
             >
-            <!-- 骨架屏/預留加載與替代圖 -->
-            <div id="avatar-fallback" class="hidden w-full h-full rounded-full bg-gradient-to-br from-brand-accent/20 to-brand-accent/5 flex items-center justify-center">
-                <span class="text-brand-accent font-bold text-3xl">奇昌</span>
+            <!-- 預載入與備用文字頭像（當照片尚未上傳或載入中顯示） -->
+            <div id="avatar-fallback" class="absolute inset-1.5 rounded-full bg-gradient-to-br from-brand-accent/20 to-brand-accent/5 flex flex-col items-center justify-center">
+                <span class="text-brand-accent font-bold text-3xl">葉</span>
+                <span class="text-brand-accent/60 font-medium text-[10px] tracking-widest mt-0.5">YCC</span>
             </div>
         </div>
 
@@ -362,7 +363,30 @@
     </div>
 
     <script>
-        // 圖片讀取失敗處理
+        // 核心：快取防護（Cache-Buster）機制
+        // 網頁初始化時自動呼叫，動態加上時間戳，確保每次都拿到最新上傳到 Github 的照片！
+        window.addEventListener('DOMContentLoaded', () => {
+            const avatarImg = document.getElementById('avatar');
+            if (avatarImg) {
+                // 使用目前的時間戳作為 Version 標記，徹底防止瀏覽器讀取過期快取
+                const uniqueId = new Date().getTime();
+                avatarImg.src = `profile.jpg?v=${uniqueId}`;
+            }
+        });
+
+        // 圖片順利讀取時的處理（平滑漸入顯示照片）
+        function handleAvatarLoad() {
+            const avatarImg = document.getElementById('avatar');
+            const fallbackDiv = document.getElementById('avatar-fallback');
+            if (avatarImg && fallbackDiv) {
+                avatarImg.classList.remove('opacity-0');
+                avatarImg.classList.add('opacity-100');
+                // 成功載入後，完全隱藏備用文字，避免背景文字透出來
+                fallbackDiv.classList.add('hidden');
+            }
+        }
+
+        // 圖片讀取失敗時的退路處理（自動顯示精緻文字頭像）
         function handleAvatarError() {
             const avatarImg = document.getElementById('avatar');
             const fallbackDiv = document.getElementById('avatar-fallback');
