@@ -53,8 +53,9 @@
     <nav class="sticky top-0 z-50 bg-brand-beige/80 backdrop-blur-md border-b border-brand-accent/10">
         <div class="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
             <a href="#" class="font-bold text-lg tracking-wider text-brand-accent flex items-center gap-2">
-                <span>YEH CHI-CHANG</span>
-                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 animate-pulse"
+                <span>YEE CHI-CHANG</span>
+                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 animate-pulse">
+                    ● Live
                 </span>
             </a>
             <div class="flex space-x-6 text-sm font-medium">
@@ -70,9 +71,9 @@
     <section class="max-w-4xl mx-auto px-6 py-12 md:py-20 flex flex-col items-center text-center">
         <!-- 個人頭像容器 (帶有動態讀取圈效果) -->
         <div class="relative w-36 h-36 md:w-40 md:h-40 rounded-full p-1.5 bg-gradient-to-tr from-brand-accent to-brand-accent/30 premium-shadow mb-6 group overflow-hidden">
-            <!-- 實體照片讀取 -->
+            <!-- 實體照片讀取：已更新為您的正確資料夾與檔名 Image/profile2.jpg -->
             <img 
-                src="profile.jpg" 
+                src="Image/profile2.jpg" 
                 alt="葉奇昌" 
                 id="avatar"
                 class="w-full h-full object-cover rounded-full transition-transform duration-500 group-hover:scale-105"
@@ -401,12 +402,11 @@
         document.addEventListener('DOMContentLoaded', function() {
             // 解析當前網頁所在的 GitHub 資訊
             const currentUrl = window.location.href;
-            let githubUsername = "jkes48822789"; // 您的預設 GitHub 帳號
-            let githubRepoName = "";             // 儲存庫名稱
+            let githubUsername = "jkes48822789-cmyk"; // 根據您的截圖更新為正確帳號
+            let githubRepoName = "Portfolio";         // 根據您的截圖更新為正確儲存庫名稱
             
-            // 嘗試從 URL 自動剖析 GitHub 的使用者名稱與專案名稱
+            // 嘗試從 URL 自動剖析真實部署路徑
             if (currentUrl.includes("github.io")) {
-                // 網址格式如: https://username.github.io/reponame/
                 try {
                     const domainParts = window.location.hostname.split('.');
                     githubUsername = domainParts[0];
@@ -419,10 +419,7 @@
                 }
             }
 
-            // 如果未能動態解析儲存庫名稱，則嘗試向 GitHub API 發送使用者資訊獲取最新儲存庫
-            const apiEndpoint = githubRepoName 
-                ? `https://api.github.com/repos/${githubUsername}/${githubRepoName}`
-                : `https://api.github.com/users/${githubUsername}/repos?sort=updated&per_page=1`;
+            const apiEndpoint = `https://api.github.com/repos/${githubUsername}/${githubRepoName}`;
 
             fetch(apiEndpoint)
                 .then(res => res.json())
@@ -439,7 +436,6 @@
                     return fetch(`https://api.github.com/repos/${repoFullName}/commits/main`)
                         .then(res => {
                             if (!res.ok) {
-                                // 嘗試 master 分支
                                 return fetch(`https://api.github.com/repos/${repoFullName}/commits/master`);
                             }
                             return res;
@@ -453,10 +449,10 @@
                                 ? new Date(commitData.commit.author.date).toLocaleDateString('zh-TW', {month:'short', day:'numeric', hour:'2-digit', minute:'2-digit'})
                                 : "剛剛";
 
-                            // 【核心更新技術】實時在圖片路徑後方加入最新提交編號，徹底清除瀏覽器快取！
+                            // 【實時更新核心】路徑已精準設為 Image/profile2.jpg 並附加即時 SHA 雜湊值排除快取！
                             const avatarImg = document.getElementById('avatar');
                             if (avatarImg) {
-                                avatarImg.src = `profile.jpg?v=${latestSha}`;
+                                avatarImg.src = `Image/profile2.jpg?v=${latestSha}`;
                             }
 
                             // 更新底部追蹤面板的資訊
@@ -466,7 +462,7 @@
                             document.getElementById('repo-updated').innerHTML = `<i class="fa-regular fa-clock"></i> 提交於 ${commitDate}`;
                             document.getElementById('repo-link').href = repoUrl;
 
-                            // 關閉同步旋轉特效，表示已載入最新
+                            // 關閉同步旋轉特效
                             const syncBadge = document.getElementById('sync-badge');
                             if (syncBadge) {
                                 syncBadge.innerHTML = `<i class="fa-solid fa-check"></i>`;
@@ -476,17 +472,17 @@
                         });
                 })
                 .catch(err => {
-                    console.log("GitHub API 連接限制或失敗，啟用本地實時安全機制:", err);
-                    // 備用機制：使用毫秒時間戳記來確保本地照片能實時刷新
+                    console.log("GitHub API 連接限制或失敗，啟用相對路徑實時更新安全機制:", err);
+                    // 備用機制：使用毫秒時間戳記來確保本地與 GitHub 頁面照片能實時刷新
                     const avatarImg = document.getElementById('avatar');
                     if (avatarImg) {
-                        avatarImg.src = `profile.jpg?t=${Date.now()}`;
+                        avatarImg.src = `Image/profile2.jpg?t=${Date.now()}`;
                     }
                     
-                    document.getElementById('repo-status').innerText = `本地同步`;
+                    document.getElementById('repo-status').innerText = `動態同步`;
                     document.getElementById('repo-status').className = "text-[10px] bg-blue-100 text-blue-800 px-1.5 py-0.2 rounded font-mono";
-                    document.getElementById('repo-commit-msg').innerText = `已透過本地即時安全戳記同步 profile.jpg`;
-                    document.getElementById('repo-updated').innerHTML = `<i class="fa-regular fa-clock"></i> 本地即時`;
+                    document.getElementById('repo-commit-msg').innerText = `已透過本地即時安全戳記同步 Image/profile2.jpg`;
+                    document.getElementById('repo-updated').innerHTML = `<i class="fa-regular fa-clock"></i> 實時同步中`;
                     
                     const syncBadge = document.getElementById('sync-badge');
                     if (syncBadge) {
@@ -533,7 +529,7 @@
             }
         }
 
-        // 5. 提交表單處理 (整合 mailto 便民服務)
+        // 5. 提交表單處理 (整合 mailto 服務)
         function handleFormSubmit(e) {
             e.preventDefault();
             const name = document.getElementById('contact-name').value;
