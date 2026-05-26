@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>葉奇昌 | 個人介紹單頁</title>
+    <title>葉奇昌 | 個人介紹單頁 ‧ 實時追蹤版</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts Noto Sans TC -->
@@ -52,7 +52,12 @@
     <!-- 導覽列 -->
     <nav class="sticky top-0 z-50 bg-brand-beige/80 backdrop-blur-md border-b border-brand-accent/10">
         <div class="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
-            <a href="#" class="font-bold text-lg tracking-wider text-brand-accent">YEH CHI-CHANG</a>
+            <a href="#" class="font-bold text-lg tracking-wider text-brand-accent flex items-center gap-2">
+                <span>YEH CHI-CHANG</span>
+                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 animate-pulse">
+                    ● Live
+                </span>
+            </a>
             <div class="flex space-x-6 text-sm font-medium">
                 <a href="#about" class="hover:text-brand-accent transition-colors duration-200">關於我</a>
                 <a href="#skills" class="hover:text-brand-accent transition-colors duration-200">專業證照</a>
@@ -64,20 +69,24 @@
 
     <!-- 主視覺 Banner (Hero Section) -->
     <section class="max-w-4xl mx-auto px-6 py-12 md:py-20 flex flex-col items-center text-center">
-        <!-- 個人頭像容器 -->
+        <!-- 個人頭像容器 (帶有動態讀取圈效果) -->
         <div class="relative w-36 h-36 md:w-40 md:h-40 rounded-full p-1.5 bg-gradient-to-tr from-brand-accent to-brand-accent/30 premium-shadow mb-6 group overflow-hidden">
-            <!-- 實體照片讀取（透過 JS 初始化並加入 TimeStamp 繞過快取） -->
+            <!-- 實體照片讀取 -->
             <img 
-                id="avatar"
+                src="profile.jpg" 
                 alt="葉奇昌" 
-                class="w-full h-full object-cover rounded-full transition-transform duration-500 group-hover:scale-105 opacity-0 transition-opacity duration-300"
+                id="avatar"
+                class="w-full h-full object-cover rounded-full transition-transform duration-500 group-hover:scale-105"
                 onerror="handleAvatarError()"
-                onload="handleAvatarLoad()"
             >
-            <!-- 預載入與備用文字頭像（當照片尚未上傳或載入中顯示） -->
-            <div id="avatar-fallback" class="absolute inset-1.5 rounded-full bg-gradient-to-br from-brand-accent/20 to-brand-accent/5 flex flex-col items-center justify-center">
-                <span class="text-brand-accent font-bold text-3xl">葉</span>
-                <span class="text-brand-accent/60 font-medium text-[10px] tracking-widest mt-0.5">YCC</span>
+            <!-- 骨架屏/預留加載與替代圖 -->
+            <div id="avatar-fallback" class="hidden w-full h-full rounded-full bg-gradient-to-br from-brand-accent/20 to-brand-accent/5 flex items-center justify-center">
+                <span class="text-brand-accent font-bold text-3xl">奇昌</span>
+            </div>
+            
+            <!-- 實時同步小徽章 -->
+            <div id="sync-badge" class="absolute bottom-2 right-2 bg-brand-accent text-white w-6 h-6 rounded-full flex items-center justify-center text-[10px] shadow-lg border-2 border-brand-beige" title="GitHub 照片已實時同步更新">
+                <i class="fa-solid fa-rotate animate-spin"></i>
             </div>
         </div>
 
@@ -348,8 +357,34 @@
         </div>
     </section>
 
+    <!-- GitHub 儲存庫實時追蹤狀態列 (動態感知) -->
+    <section class="bg-stone-100 py-8 border-t border-brand-accent/5">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="bg-white rounded-xl p-4 premium-shadow-sm border border-stone-200 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-stone-900 text-white flex items-center justify-center text-sm shrink-0">
+                        <i class="fa-brands fa-github"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-stone-800 flex items-center gap-1">
+                            GitHub 儲存庫實時監測 
+                            <span id="repo-status" class="text-[10px] bg-yellow-100 text-yellow-800 px-1.5 py-0.2 rounded font-mono">載入中...</span>
+                        </h4>
+                        <p id="repo-commit-msg" class="text-stone-500 italic mt-0.5">正在與 GitHub 網路同步中...</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 text-stone-500 shrink-0">
+                    <span id="repo-updated" class="flex items-center gap-1"><i class="fa-regular fa-clock"></i> 讀取中</span>
+                    <a id="repo-link" href="https://github.com" target="_blank" class="px-3 py-1.5 bg-stone-900 text-white rounded-lg hover:bg-stone-800 transition-colors flex items-center gap-1">
+                        <i class="fa-solid fa-code-branch"></i> 前往儲存庫
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- 頁尾 (Footer) -->
-    <footer class="bg-stone-900 text-stone-400 py-8 border-t border-stone-800 text-center">
+    <footer class="bg-stone-900 text-stone-400 py-8 text-center">
         <div class="max-w-4xl mx-auto px-6 text-xs space-y-2">
             <p class="text-stone-300">葉奇昌 ‧ 數位履歷個人介紹單頁</p>
             <p>© 2026 Yee Chi-Chang. All Rights Reserved.</p>
@@ -363,30 +398,105 @@
     </div>
 
     <script>
-        // 核心：快取防護（Cache-Buster）機制
-        // 網頁初始化時自動呼叫，動態加上時間戳，確保每次都拿到最新上傳到 Github 的照片！
-        window.addEventListener('DOMContentLoaded', () => {
-            const avatarImg = document.getElementById('avatar');
-            if (avatarImg) {
-                // 使用目前的時間戳作為 Version 標記，徹底防止瀏覽器讀取過期快取
-                const uniqueId = new Date().getTime();
-                avatarImg.src = `profile2.jpg?v=${uniqueId}`;
+        // 1. 實時照片快取排除與儲存庫動態探針技術
+        document.addEventListener('DOMContentLoaded', function() {
+            // 解析當前網頁所在的 GitHub 資訊
+            const currentUrl = window.location.href;
+            let githubUsername = "jkes48822789"; // 您的預設 GitHub 帳號
+            let githubRepoName = "";             // 儲存庫名稱
+            
+            // 嘗試從 URL 自動剖析 GitHub 的使用者名稱與專案名稱
+            if (currentUrl.includes("github.io")) {
+                // 網址格式如: https://username.github.io/reponame/
+                try {
+                    const domainParts = window.location.hostname.split('.');
+                    githubUsername = domainParts[0];
+                    const pathParts = window.location.pathname.split('/').filter(Boolean);
+                    if (pathParts.length > 0) {
+                        githubRepoName = pathParts[0];
+                    }
+                } catch(e) {
+                    console.error("無法剖析 GitHub 網址路徑", e);
+                }
             }
+
+            // 如果未能動態解析儲存庫名稱，則嘗試向 GitHub API 發送使用者資訊獲取最新儲存庫
+            const apiEndpoint = githubRepoName 
+                ? `https://api.github.com/repos/${githubUsername}/${githubRepoName}`
+                : `https://api.github.com/users/${githubUsername}/repos?sort=updated&per_page=1`;
+
+            fetch(apiEndpoint)
+                .then(res => res.json())
+                .then(data => {
+                    let repoData = Array.isArray(data) ? data[0] : data;
+                    if (!repoData || repoData.message === "Not Found") {
+                        throw new Error("找不到對應的儲存庫");
+                    }
+                    
+                    const repoFullName = repoData.full_name;
+                    const repoUrl = repoData.html_url;
+                    
+                    // 獲取該儲存庫的最新提交記錄 (Commit)
+                    return fetch(`https://api.github.com/repos/${repoFullName}/commits/main`)
+                        .then(res => {
+                            if (!res.ok) {
+                                // 嘗試 master 分支
+                                return fetch(`https://api.github.com/repos/${repoFullName}/commits/master`);
+                            }
+                            return res;
+                        })
+                        .then(res => res.json())
+                        .then(commitData => {
+                            // 取得最新 Commit 的 SHA 作為獨一無二的快取排除字串 (Cache Buster)
+                            const latestSha = commitData.sha ? commitData.sha.substring(0, 7) : Date.now();
+                            const commitMessage = commitData.commit ? commitData.commit.message : "更新照片與網頁架構";
+                            const commitDate = commitData.commit?.author?.date 
+                                ? new Date(commitData.commit.author.date).toLocaleDateString('zh-TW', {month:'short', day:'numeric', hour:'2-digit', minute:'2-digit'})
+                                : "剛剛";
+
+                            // 【核心更新技術】實時在圖片路徑後方加入最新提交編號，徹底清除瀏覽器快取！
+                            const avatarImg = document.getElementById('avatar');
+                            if (avatarImg) {
+                                avatarImg.src = `profile.jpg?v=${latestSha}`;
+                            }
+
+                            // 更新底部追蹤面板的資訊
+                            document.getElementById('repo-status').innerText = `同步中 (SHA: ${latestSha})`;
+                            document.getElementById('repo-status').className = "text-[10px] bg-green-100 text-green-800 px-1.5 py-0.2 rounded font-mono";
+                            document.getElementById('repo-commit-msg').innerText = `最新動態: "${commitMessage}"`;
+                            document.getElementById('repo-updated').innerHTML = `<i class="fa-regular fa-clock"></i> 提交於 ${commitDate}`;
+                            document.getElementById('repo-link').href = repoUrl;
+
+                            // 關閉同步旋轉特效，表示已載入最新
+                            const syncBadge = document.getElementById('sync-badge');
+                            if (syncBadge) {
+                                syncBadge.innerHTML = `<i class="fa-solid fa-check"></i>`;
+                                syncBadge.title = `已完美同步 GitHub 提交 (${latestSha})`;
+                                setTimeout(() => { syncBadge.classList.add('scale-0', 'transition-transform', 'duration-500'); }, 3000);
+                            }
+                        });
+                })
+                .catch(err => {
+                    console.log("GitHub API 連接限制或失敗，啟用本地實時安全機制:", err);
+                    // 備用機制：使用毫秒時間戳記來確保本地照片能實時刷新
+                    const avatarImg = document.getElementById('avatar');
+                    if (avatarImg) {
+                        avatarImg.src = `profile.jpg?t=${Date.now()}`;
+                    }
+                    
+                    document.getElementById('repo-status').innerText = `本地同步`;
+                    document.getElementById('repo-status').className = "text-[10px] bg-blue-100 text-blue-800 px-1.5 py-0.2 rounded font-mono";
+                    document.getElementById('repo-commit-msg').innerText = `已透過本地即時安全戳記同步 profile.jpg`;
+                    document.getElementById('repo-updated').innerHTML = `<i class="fa-regular fa-clock"></i> 本地即時`;
+                    
+                    const syncBadge = document.getElementById('sync-badge');
+                    if (syncBadge) {
+                        syncBadge.innerHTML = `<i class="fa-solid fa-bolt"></i>`;
+                    }
+                });
         });
 
-        // 圖片順利讀取時的處理（平滑漸入顯示照片）
-        function handleAvatarLoad() {
-            const avatarImg = document.getElementById('avatar');
-            const fallbackDiv = document.getElementById('avatar-fallback');
-            if (avatarImg && fallbackDiv) {
-                avatarImg.classList.remove('opacity-0');
-                avatarImg.classList.add('opacity-100');
-                // 成功載入後，完全隱藏備用文字，避免背景文字透出來
-                fallbackDiv.classList.add('hidden');
-            }
-        }
-
-        // 圖片讀取失敗時的退路處理（自動顯示精緻文字頭像）
+        // 2. 圖片讀取失敗處理
         function handleAvatarError() {
             const avatarImg = document.getElementById('avatar');
             const fallbackDiv = document.getElementById('avatar-fallback');
@@ -396,7 +506,7 @@
             }
         }
 
-        // 複製至剪貼簿
+        // 3. 複製至剪貼簿
         function copyToClipboard(text, type) {
             const tempInput = document.createElement('input');
             tempInput.value = text;
@@ -408,7 +518,7 @@
             showToast(`已複製您的 ${type}：${text}`);
         }
 
-        // 顯示 Toast 提示
+        // 4. 顯示 Toast 提示
         function showToast(message) {
             const toast = document.getElementById('toast');
             const toastText = document.getElementById('toast-text');
@@ -424,7 +534,7 @@
             }
         }
 
-        // 提交表單處理 (整合 mailto 便民服務)
+        // 5. 提交表單處理 (整合 mailto 便民服務)
         function handleFormSubmit(e) {
             e.preventDefault();
             const name = document.getElementById('contact-name').value;
