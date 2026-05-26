@@ -1,37 +1,32 @@
 <!DOCTYPE html>
-<html lang="zh-TW" class="scroll-smooth">
+<html lang="zh-Hant-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>葉奇昌 | 個人介紹單頁</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome Icons -->
+    <!-- Google Fonts Noto Sans TC -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts: Playfair Display & Noto Sans TC -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: {
-                        brand: {
-                            beige: '#FDFBF7', // 質感米白底色
-                            card: '#FAF6F0',  // 溫潤暖米色卡片
-                            dark: '#2C2A29',  // 深炭灰文字
-                            accent: '#8C7A6B', // 雅致暖灰褐色
-                            lightaccent: '#EAE3D2',
-                            mosOrange: '#D83B01', // PowerPoint 橘
-                            mosBlue: '#0078D4',   // Word 藍
-                            mosGreen: '#107C41'   // Excel 綠
-                        }
-                    },
                     fontFamily: {
                         sans: ['Noto Sans TC', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif']
+                    },
+                    colors: {
+                        brand: {
+                            beige: '#FDFBF7',  // 極致暖米白底色
+                            dark: '#2D2A26',   // 炭灰深色文字
+                            accent: '#8C7853', // 暖大地金屬色
+                            powerpoint: '#D83B01', // PPT 橘
+                            word: '#0078D4',       // Word 藍
+                            excel: '#107C41'       // Excel 綠
+                        }
                     }
                 }
             }
@@ -41,400 +36,386 @@
         body {
             font-family: 'Noto Sans TC', sans-serif;
             background-color: #FDFBF7;
-            color: #2C2A29;
+            scroll-behavior: smooth;
         }
-        .text-serif {
-            font-family: 'Playfair Display', 'Noto Sans TC', serif;
+        /* 漸層柔和陰影 */
+        .premium-shadow {
+            box-shadow: 0 10px 30px -10px rgba(140, 120, 83, 0.15);
+        }
+        .premium-shadow-sm {
+            box-shadow: 0 4px 15px -3px rgba(140, 120, 83, 0.08);
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col selection:bg-brand-lightaccent">
+<body class="text-brand-dark min-h-screen selection:bg-brand-accent/20 selection:text-brand-accent">
 
     <!-- 導覽列 -->
-    <header class="sticky top-0 z-50 bg-brand-beige/90 backdrop-blur-md border-b border-brand-lightaccent/50 transition-all duration-300">
-        <div class="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-xl font-bold tracking-wider text-serif text-brand-dark">Y.C.C.</a>
-            <nav class="flex space-x-6 text-sm font-medium text-brand-dark/70">
+    <nav class="sticky top-0 z-50 bg-brand-beige/80 backdrop-blur-md border-b border-brand-accent/10">
+        <div class="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="#" class="font-bold text-lg tracking-wider text-brand-accent">YEE CHI-CHANG</a>
+            <div class="flex space-x-6 text-sm font-medium">
                 <a href="#about" class="hover:text-brand-accent transition-colors duration-200">關於我</a>
                 <a href="#skills" class="hover:text-brand-accent transition-colors duration-200">專業證照</a>
-                <a href="#portfolio" class="hover:text-brand-accent transition-colors duration-200">精選作品</a>
-                <a href="#contact" class="hover:text-brand-accent transition-colors duration-200">聯絡我</a>
-            </nav>
+                <a href="#portfolio" class="hover:text-brand-accent transition-colors duration-200">作品展演</a>
+                <a href="#contact" class="hover:text-brand-accent transition-colors duration-200">聯繫我</a>
+            </div>
         </div>
-    </header>
+    </nav>
 
-    <main class="flex-grow">
+    <!-- 主視覺 Banner (Hero Section) -->
+    <section class="max-w-4xl mx-auto px-6 py-12 md:py-20 flex flex-col items-center text-center">
+        <!-- 個人頭像容器 -->
+        <div class="relative w-36 h-36 md:w-40 md:h-40 rounded-full p-1.5 bg-gradient-to-tr from-brand-accent to-brand-accent/30 premium-shadow mb-6 group overflow-hidden">
+            <!-- 實體照片讀取 -->
+            <img 
+                src="profile.jpg" 
+                alt="葉奇昌" 
+                id="avatar"
+                class="w-full h-full object-cover rounded-full transition-transform duration-500 group-hover:scale-105"
+                onerror="handleAvatarError()"
+            >
+            <!-- 骨架屏/預留加載與替代圖 -->
+            <div id="avatar-fallback" class="hidden w-full h-full rounded-full bg-gradient-to-br from-brand-accent/20 to-brand-accent/5 flex items-center justify-center">
+                <span class="text-brand-accent font-bold text-3xl">奇昌</span>
+            </div>
+        </div>
+
+        <h1 class="text-3xl md:text-4xl font-bold tracking-tight mb-2">葉奇昌</h1>
+        <p class="text-brand-accent font-medium text-lg md:text-xl tracking-widest mb-6">細心負責 ‧ 踏實穩健 ‧ 持續自我挑戰的資訊行政專才</p>
         
-        <!-- 首頁視覺區 / 英雄區 -->
-        <section class="max-w-4xl mx-auto px-6 py-16 md:py-24 flex flex-col justify-center min-h-[70vh]">
-            <div class="space-y-6">
-                <p class="text-brand-accent font-semibold tracking-widest text-xs uppercase">Welcome to my space</p>
-                <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-serif text-brand-dark leading-tight">
-                    我是 <span class="border-b-4 border-brand-accent/30 pb-1">葉奇昌</span>
-                </h1>
-                <p class="text-lg md:text-2xl text-brand-dark/80 font-light max-w-2xl leading-relaxed">
-                    「細心負責、持續成長，用專業與真誠發揮價值的實踐者。」
+        <div class="h-[1px] w-20 bg-brand-accent/30 mb-6"></div>
+        
+        <p class="max-w-xl text-stone-500 text-sm md:text-base leading-relaxed">
+            您好！我是葉奇昌。我堅信「態度決定高度，細節成就品質」。面對生活與工作，我始終保持真誠有禮的待人態度，並以強大的適應力及耐心，深耕每一項交辦任務，致力於為團隊創造長遠價值。
+        </p>
+    </section>
+
+    <!-- 關於我 (About Me) -->
+    <section id="about" class="bg-stone-50 py-16 border-y border-brand-accent/5">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-2xl font-bold mb-10 text-center flex items-center justify-center gap-2">
+                <i class="fa-regular fa-user text-brand-accent text-xl"></i>
+                個人特質 ‧ About Me
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- 特質 1 -->
+                <div class="bg-white p-6 rounded-2xl premium-shadow-sm border border-brand-accent/5 flex gap-4">
+                    <div class="w-10 h-10 rounded-xl bg-brand-accent/10 flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-circle-check text-brand-accent"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-stone-800 mb-1">細心認真，做事負責</h3>
+                        <p class="text-sm text-stone-500 leading-relaxed">對待每項工作細節不馬虎，秉持強烈的責任感，務求在時限內完美達成目標。</p>
+                    </div>
+                </div>
+
+                <!-- 特質 2 -->
+                <div class="bg-white p-6 rounded-2xl premium-shadow-sm border border-brand-accent/5 flex gap-4">
+                    <div class="w-10 h-10 rounded-xl bg-brand-accent/10 flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-users text-brand-accent"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-stone-800 mb-1">真誠有禮，團隊合作</h3>
+                        <p class="text-sm text-stone-500 leading-relaxed">具備優秀的跨部門溝通技巧與同理心，樂於融入團隊，攜手合作共創佳績。</p>
+                    </div>
+                </div>
+
+                <!-- 特質 3 -->
+                <div class="bg-white p-6 rounded-2xl premium-shadow-sm border border-brand-accent/5 flex gap-4">
+                    <div class="w-10 h-10 rounded-xl bg-brand-accent/10 flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-bolt text-brand-accent"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-stone-800 mb-1">主動學習，適應力強</h3>
+                        <p class="text-sm text-stone-500 leading-relaxed">求知欲旺盛，面對全新環境或新技術，能主動摸索並在極短時間內快速上手。</p>
+                    </div>
+                </div>
+
+                <!-- 特質 4 -->
+                <div class="bg-white p-6 rounded-2xl premium-shadow-sm border border-brand-accent/5 flex gap-4">
+                    <div class="w-10 h-10 rounded-xl bg-brand-accent/10 flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-arrow-up-right-path text-brand-accent"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-stone-800 mb-1">耐壓成長，不懈調整</h3>
+                        <p class="text-sm text-stone-500 leading-relaxed">視壓力為前行的推動力。在挑戰中時刻進行滾動式自我調整，保持正向的心態前行。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 bg-brand-accent/5 p-6 rounded-2xl border border-brand-accent/10 text-center max-w-2xl mx-auto">
+                <i class="fa-solid fa-quote-left text-brand-accent/30 text-2xl mb-2 block"></i>
+                <p class="text-sm md:text-base text-brand-accent font-medium italic">
+                    「希望透過工作累積實務經驗，提升專業能力，並發揮自身價值。」
                 </p>
-                <div class="pt-6 flex flex-wrap gap-4">
-                    <a href="#contact" class="px-6 py-3 bg-brand-dark text-brand-beige font-medium rounded-lg hover:bg-brand-accent transition-all duration-300 shadow-md hover:shadow-lg active:scale-95">
-                        聯絡諮詢 <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
-                    </a>
-                    <a href="#about" class="px-6 py-3 bg-transparent border border-brand-dark/20 text-brand-dark font-medium rounded-lg hover:bg-brand-card transition-all duration-300 active:scale-95">
-                        了解更多
-                    </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 三項專業技能 (MOS Certification) -->
+    <section id="skills" class="py-16">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-2xl font-bold mb-2 text-center flex items-center justify-center gap-2">
+                <i class="fa-solid fa-award text-brand-accent text-xl"></i>
+                專業認證 ‧ Certification
+            </h2>
+            <p class="text-center text-sm text-stone-400 mb-10">Microsoft Office Specialist 核心軟體專業實力</p>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- PPT -->
+                <div class="bg-white p-6 rounded-2xl premium-shadow border-t-4 border-brand-powerpoint hover:-translate-y-1 transition-transform duration-300">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-brand-powerpoint/10 flex items-center justify-center">
+                            <i class="fa-regular fa-file-powerpoint text-brand-powerpoint text-2xl"></i>
+                        </div>
+                        <span class="text-xs font-semibold px-2.5 py-1 bg-brand-powerpoint/10 text-brand-powerpoint rounded-full">MOS 認證</span>
+                    </div>
+                    <h3 class="font-bold text-lg text-stone-800 mb-2">PowerPoint</h3>
+                    <p class="text-xs text-stone-500 leading-relaxed">
+                        精通簡報排版與視覺邏輯，能靈活運用母片、動畫以及流暢的簡報結構，為商業提案、報告或成果發表打造專業吸睛的演示。
+                    </p>
+                </div>
+
+                <!-- Word -->
+                <div class="bg-white p-6 rounded-2xl premium-shadow border-t-4 border-brand-word hover:-translate-y-1 transition-transform duration-300">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-brand-word/10 flex items-center justify-center">
+                            <i class="fa-regular fa-file-word text-brand-word text-2xl"></i>
+                        </div>
+                        <span class="text-xs font-semibold px-2.5 py-1 bg-brand-word/10 text-brand-word rounded-full">MOS 認證</span>
+                    </div>
+                    <h3 class="font-bold text-lg text-stone-800 mb-2">Word</h3>
+                    <p class="text-xs text-stone-500 leading-relaxed">
+                        擅長結構化排版、大型文件製作、套印信件、多層次清單、樣式表設計及精細編排，確保各式行政公文與報告書皆能美觀且標準。
+                    </p>
+                </div>
+
+                <!-- Excel -->
+                <div class="bg-white p-6 rounded-2xl premium-shadow border-t-4 border-brand-excel hover:-translate-y-1 transition-transform duration-300">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-brand-excel/10 flex items-center justify-center">
+                            <i class="fa-regular fa-file-excel text-brand-excel text-2xl"></i>
+                        </div>
+                        <span class="text-xs font-semibold px-2.5 py-1 bg-brand-excel/10 text-brand-excel rounded-full">MOS 認證</span>
+                    </div>
+                    <h3 class="font-bold text-lg text-stone-800 mb-2">Excel</h3>
+                    <p class="text-xs text-stone-500 leading-relaxed">
+                        掌握數據分析及函數管理，善用樞紐分析表、進階圖表和資料篩選與格式化，快速且精準地彙整大型報表、解讀關鍵業務數據。
+                    </p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- 關於我 -->
-        <section id="about" class="bg-brand-card py-20 border-y border-brand-lightaccent/40">
-            <div class="max-w-4xl mx-auto px-6">
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
-                    
-                    <!-- 形象插圖/意象占位符 -->
-                    <div class="md:col-span-4 flex justify-center">
-                        <div class="relative w-48 h-48 md:w-56 md:h-56 rounded-2xl bg-gradient-to-tr from-brand-accent/20 to-brand-lightaccent overflow-hidden shadow-inner flex items-center justify-center border border-brand-lightaccent">
-                            <!-- 使用雅致的姓名首字母作為標誌 -->
-                            <span class="text-serif text-7xl font-light text-brand-accent/60 select-none">YC</span>
-                            <div class="absolute inset-0 border-2 border-brand-beige m-3 rounded-xl opacity-40"></div>
-                        </div>
+    <!-- 3個作品占位區 (Portfolio) -->
+    <section id="portfolio" class="bg-stone-50 py-16 border-t border-brand-accent/5">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-2xl font-bold mb-2 text-center flex items-center justify-center gap-2">
+                <i class="fa-solid fa-briefcase text-brand-accent text-xl"></i>
+                專案作品 ‧ Portfolio
+            </h2>
+            <p class="text-center text-sm text-stone-400 mb-10">累積實務成果與專業產出展示</p>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- 作品 1 -->
+                <div class="bg-white rounded-2xl overflow-hidden premium-shadow-sm border border-brand-accent/5 group">
+                    <div class="aspect-video bg-stone-100 flex flex-col items-center justify-center text-stone-400 p-4 border-b border-stone-100 relative overflow-hidden">
+                        <i class="fa-regular fa-images text-3xl mb-2 group-hover:scale-110 transition-transform duration-300"></i>
+                        <span class="text-xs font-medium">PowerPoint 作品佔位區</span>
+                        <div class="absolute inset-0 bg-brand-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
-
-                    <!-- 關於我內容 -->
-                    <div class="md:col-span-8 space-y-6">
-                        <div class="space-y-2">
-                            <span class="text-xs font-bold uppercase tracking-wider text-brand-accent">About Me</span>
-                            <h2 class="text-2xl md:text-3xl font-bold tracking-wide text-brand-dark text-serif">關於我</h2>
-                        </div>
-                        <div class="space-y-4 text-brand-dark/80 leading-relaxed font-light">
-                            <p class="flex items-start">
-                                <span class="inline-flex items-center justify-center min-w-[24px] h-6 text-brand-accent mr-3 mt-0.5"><i class="fa-solid fa-circle-check text-xs"></i></span>
-                                <span>本人個性細心認真，做事負責，對交辦事項會努力完成。</span>
-                            </p>
-                            <p class="flex items-start">
-                                <span class="inline-flex items-center justify-center min-w-[24px] h-6 text-brand-accent mr-3 mt-0.5"><i class="fa-solid fa-circle-check text-xs"></i></span>
-                                <span>待人真誠有禮，具備良好的團隊合作與溝通能力。</span>
-                            </p>
-                            <p class="flex items-start">
-                                <span class="inline-flex items-center justify-center min-w-[24px] h-6 text-brand-accent mr-3 mt-0.5"><i class="fa-solid fa-circle-check text-xs"></i></span>
-                                <span>學習能力佳，願意主動接觸新事物並快速適應環境。</span>
-                            </p>
-                            <p class="flex items-start">
-                                <span class="inline-flex items-center justify-center min-w-[24px] h-6 text-brand-accent mr-3 mt-0.5"><i class="fa-solid fa-circle-check text-xs"></i></span>
-                                <span>面對工作有耐心與責任感，能在壓力下持續調整與成長。</span>
-                            </p>
-                            <p class="flex items-start">
-                                <span class="inline-flex items-center justify-center min-w-[24px] h-6 text-brand-accent mr-3 mt-0.5"><i class="fa-solid fa-circle-check text-xs"></i></span>
-                                <span>希望透過工作累積實務經驗，提升專業能力並發揮自身價值。</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 3項技能 (MOS證照) -->
-        <section id="skills" class="py-20">
-            <div class="max-w-4xl mx-auto px-6">
-                <div class="text-center space-y-2 mb-16">
-                    <span class="text-xs font-bold uppercase tracking-wider text-brand-accent">Professional Certifications</span>
-                    <h2 class="text-2xl md:text-3xl font-bold text-brand-dark text-serif">專業證照與技能</h2>
-                    <p class="text-xs text-brand-dark/60 max-w-md mx-auto">經 Microsoft 官方認證之微軟辦公軟體核心專業能力</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- PowerPoint -->
-                    <div class="bg-brand-card p-8 rounded-2xl border border-brand-lightaccent/30 hover:border-brand-accent/40 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between group">
-                        <div class="space-y-4">
-                            <div class="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center text-brand-mosOrange text-xl group-hover:scale-110 transition-transform duration-300">
-                                <i class="fa-regular fa-file-powerpoint text-2xl"></i>
-                            </div>
-                            <div class="space-y-1">
-                                <span class="text-[10px] font-semibold tracking-wider text-brand-mosOrange bg-amber-500/10 px-2 py-0.5 rounded">MOS CERTIFIED</span>
-                                <h3 class="text-xl font-bold text-brand-dark">Microsoft PowerPoint</h3>
-                            </div>
-                            <p class="text-sm text-brand-dark/70 font-light leading-relaxed">
-                                具備商務簡報架構設計、資訊圖表化與動畫轉場配置實力。擅長將複雜數據邏輯提煉為直覺、具說服力的演示報告。
-                            </p>
-                        </div>
-                        <div class="mt-6 pt-4 border-t border-brand-lightaccent/30 text-xs text-brand-accent font-medium tracking-wide">
-                            商務簡報 & 視覺化溝通
-                        </div>
-                    </div>
-
-                    <!-- Word -->
-                    <div class="bg-brand-card p-8 rounded-2xl border border-brand-lightaccent/30 hover:border-brand-accent/40 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between group">
-                        <div class="space-y-4">
-                            <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-brand-mosBlue text-xl group-hover:scale-110 transition-transform duration-300">
-                                <i class="fa-regular fa-file-word text-2xl"></i>
-                            </div>
-                            <div class="space-y-1">
-                                <span class="text-[10px] font-semibold tracking-wider text-brand-mosBlue bg-blue-500/10 px-2 py-0.5 rounded">MOS CERTIFIED</span>
-                                <h3 class="text-xl font-bold text-brand-dark">Microsoft Word</h3>
-                            </div>
-                            <p class="text-sm text-brand-dark/70 font-light leading-relaxed">
-                                精通長篇文件排版、合約與商業企劃書格式規劃。掌握樣式定義、目錄自動生成及追蹤修訂，確保文書產出的最高標準與專業度。
-                            </p>
-                        </div>
-                        <div class="mt-6 pt-4 border-t border-brand-lightaccent/30 text-xs text-brand-accent font-medium tracking-wide">
-                            文件排版 & 企劃書整合
-                        </div>
-                    </div>
-
-                    <!-- Excel -->
-                    <div class="bg-brand-card p-8 rounded-2xl border border-brand-lightaccent/30 hover:border-brand-accent/40 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between group">
-                        <div class="space-y-4">
-                            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-brand-mosGreen text-xl group-hover:scale-110 transition-transform duration-300">
-                                <i class="fa-regular fa-file-excel text-2xl"></i>
-                            </div>
-                            <div class="space-y-1">
-                                <span class="text-[10px] font-semibold tracking-wider text-brand-mosGreen bg-emerald-500/10 px-2 py-0.5 rounded">MOS CERTIFIED</span>
-                                <h3 class="text-xl font-bold text-brand-dark">Microsoft Excel</h3>
-                            </div>
-                            <p class="text-sm text-brand-dark/70 font-light leading-relaxed">
-                                專精於數據分析、邏輯函數公式建立與資料報表交叉比對。能運用動態圖表與資料篩選，將龐雜數據轉化為有效決策資訊。
-                            </p>
-                        </div>
-                        <div class="mt-6 pt-4 border-t border-brand-lightaccent/30 text-xs text-brand-accent font-medium tracking-wide">
-                            數據統計 & 流程自動化
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 3個作品占位區 -->
-        <section id="portfolio" class="bg-brand-card py-20 border-y border-brand-lightaccent/40">
-            <div class="max-w-4xl mx-auto px-6">
-                <div class="text-center space-y-2 mb-16">
-                    <span class="text-xs font-bold uppercase tracking-wider text-brand-accent">My Projects</span>
-                    <h2 class="text-2xl md:text-3xl font-bold text-brand-dark text-serif">精選作品</h2>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- 作品 1 -->
-                    <div class="bg-brand-beige rounded-2xl overflow-hidden shadow-sm hover:shadow-lg border border-brand-lightaccent/50 transition-all duration-300 group">
-                        <div class="h-44 bg-gradient-to-br from-brand-accent/10 to-brand-lightaccent/60 flex flex-col justify-center items-center text-brand-accent/40 relative">
-                            <i class="fa-regular fa-folder-open text-4xl group-hover:scale-110 transition-transform duration-300"></i>
-                            <span class="text-xs mt-3 tracking-widest text-brand-accent/70 uppercase">PROJECT #1</span>
-                            <!-- 裝飾框 -->
-                            <div class="absolute inset-4 border border-brand-accent/10 rounded-lg pointer-events-none"></div>
-                        </div>
-                        <div class="p-6 space-y-3">
-                            <div class="flex justify-between items-center">
-                                <span class="px-2.5 py-1 text-[10px] font-semibold bg-brand-lightaccent/50 text-brand-accent rounded-full">文書排版範例</span>
-                                <span class="text-xs text-brand-dark/40">Word / Excel</span>
-                            </div>
-                            <h4 class="text-lg font-bold text-brand-dark">行政作業與效率流程標準化</h4>
-                            <p class="text-xs text-brand-dark/60 font-light leading-relaxed">
-                                整合 MOS 認證技能，重新規劃辦公室例行文件的表格排版與試算公式，讓跨部門協作速度有效提高。
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- 作品 2 -->
-                    <div class="bg-brand-beige rounded-2xl overflow-hidden shadow-sm hover:shadow-lg border border-brand-lightaccent/50 transition-all duration-300 group">
-                        <div class="h-44 bg-gradient-to-br from-brand-accent/10 to-brand-lightaccent/60 flex flex-col justify-center items-center text-brand-accent/40 relative">
-                            <i class="fa-regular fa-images text-4xl group-hover:scale-110 transition-transform duration-300"></i>
-                            <span class="text-xs mt-3 tracking-widest text-brand-accent/70 uppercase">PROJECT #2</span>
-                            <!-- 裝飾框 -->
-                            <div class="absolute inset-4 border border-brand-accent/10 rounded-lg pointer-events-none"></div>
-                        </div>
-                        <div class="p-6 space-y-3">
-                            <div class="flex justify-between items-center">
-                                <span class="px-2.5 py-1 text-[10px] font-semibold bg-brand-lightaccent/50 text-brand-accent rounded-full">提案簡報設計</span>
-                                <span class="text-xs text-brand-dark/40">PowerPoint</span>
-                            </div>
-                            <h4 class="text-lg font-bold text-brand-dark">商業簡報設計與視覺化簡短演繹</h4>
-                            <p class="text-xs text-brand-dark/60 font-light leading-relaxed">
-                                以簡明、易讀的視覺配置將大篇幅複雜文字濃縮至 PPT 內，強調重點，協助閱覽者能迅速建立對項目的深刻印象。
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- 作品 3 -->
-                    <div class="bg-brand-beige rounded-2xl overflow-hidden shadow-sm hover:shadow-lg border border-brand-lightaccent/50 transition-all duration-300 group">
-                        <div class="h-44 bg-gradient-to-br from-brand-accent/10 to-brand-lightaccent/60 flex flex-col justify-center items-center text-brand-accent/40 relative">
-                            <i class="fa-regular fa-chart-bar text-4xl group-hover:scale-110 transition-transform duration-300"></i>
-                            <span class="text-xs mt-3 tracking-widest text-brand-accent/70 uppercase">PROJECT #3</span>
-                            <!-- 裝飾框 -->
-                            <div class="absolute inset-4 border border-brand-accent/10 rounded-lg pointer-events-none"></div>
-                        </div>
-                        <div class="p-6 space-y-3">
-                            <div class="flex justify-between items-center">
-                                <span class="px-2.5 py-1 text-[10px] font-semibold bg-brand-lightaccent/50 text-brand-accent rounded-full">數據表單建置</span>
-                                <span class="text-xs text-brand-dark/40">Excel</span>
-                            </div>
-                            <h4 class="text-lg font-bold text-brand-dark">自動化業務統計追蹤模組</h4>
-                            <p class="text-xs text-brand-dark/60 font-light leading-relaxed">
-                                利用 Excel 計算公式，建構一套防錯、高直覺的排程與預算追蹤機制，讓專案能實現輕量化且清晰的進度追蹤。
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 聯絡方式 -->
-        <section id="contact" class="py-20">
-            <div class="max-w-4xl mx-auto px-6">
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
-                    
-                    <!-- 聯絡引言 -->
-                    <div class="md:col-span-5 space-y-6">
-                        <div class="space-y-2">
-                            <span class="text-xs font-bold uppercase tracking-wider text-brand-accent">Get In Touch</span>
-                            <h2 class="text-2xl md:text-3xl font-bold text-brand-dark text-serif">聯絡方式</h2>
-                        </div>
-                        <p class="text-brand-dark/70 font-light text-sm leading-relaxed">
-                            謝謝您的瀏覽。如果您對我的背景、特質有興趣，或想進一步洽談工作、面試、或學習的合作機會，隨時歡迎您透過下方聯絡管道與我聯繫！
+                    <div class="p-5">
+                        <h3 class="font-bold text-stone-800 text-base mb-1 group-hover:text-brand-accent transition-colors">簡報大師特訓作品</h3>
+                        <p class="text-xs text-stone-400 mb-3">#簡報美學 #邏輯架構</p>
+                        <p class="text-xs text-stone-500 leading-relaxed">
+                            運用 MOS PowerPoint 的排版技巧，製作出充滿視覺美感與數據條理的商業企劃案簡報，充分展示視覺傳達與結構化簡報能力。
                         </p>
-                        <div class="space-y-4">
-                            <!-- 電子郵件 -->
-                            <div class="flex items-center space-x-4">
-                                <div class="w-10 h-10 rounded-lg bg-brand-card border border-brand-lightaccent/60 flex items-center justify-center text-brand-accent">
-                                    <i class="fa-regular fa-envelope"></i>
-                                </div>
-                                <div class="flex-grow">
-                                    <p class="text-xs text-brand-dark/40">電子郵件</p>
-                                    <div class="flex items-center space-x-2">
-                                        <a href="mailto:jkes48822789@gmail.com" class="text-sm text-brand-dark font-medium hover:text-brand-accent transition-colors break-all">jkes48822789@gmail.com</a>
-                                        <button onclick="copyToClipboard('jkes48822789@gmail.com', 'email')" class="text-brand-dark/40 hover:text-brand-accent text-xs p-1" title="複製電子郵件">
-                                            <i id="copy-icon-email" class="fa-regular fa-copy"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- 手機號碼 -->
-                            <div class="flex items-center space-x-4">
-                                <div class="w-10 h-10 rounded-lg bg-brand-card border border-brand-lightaccent/60 flex items-center justify-center text-brand-accent">
-                                    <i class="fa-solid fa-mobile-screen-button"></i>
-                                </div>
-                                <div class="flex-grow">
-                                    <p class="text-xs text-brand-dark/40">手機號碼</p>
-                                    <div class="flex items-center space-x-2">
-                                        <a href="tel:0966667565" class="text-sm text-brand-dark font-medium hover:text-brand-accent transition-colors">0966-667-565</a>
-                                        <button onclick="copyToClipboard('0966667565', 'phone')" class="text-brand-dark/40 hover:text-brand-accent text-xs p-1" title="複製手機號碼">
-                                            <i id="copy-icon-phone" class="fa-regular fa-copy"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- 地理位置 -->
-                            <div class="flex items-center space-x-4">
-                                <div class="w-10 h-10 rounded-lg bg-brand-card border border-brand-lightaccent/60 flex items-center justify-center text-brand-accent">
-                                    <i class="fa-solid fa-location-dot"></i>
-                                </div>
-                                <div>
-                                    <p class="text-xs text-brand-dark/40">目前所在地</p>
-                                    <p class="text-sm text-brand-dark font-medium">台灣桃園市</p>
-                                </div>
-                            </div>
-                        </div>
                     </div>
+                </div>
 
-                    <!-- 內建信件模擬表單 -->
-                    <div class="md:col-span-7 bg-brand-card p-8 rounded-2xl border border-brand-lightaccent/40 shadow-sm">
-                        <h3 class="text-lg font-bold text-brand-dark mb-6">歡迎與我聯繫</h3>
-                        <form id="contactForm" class="space-y-4" onsubmit="handleFormSubmit(event)">
-                            <div>
-                                <label for="name" class="block text-xs font-medium text-brand-dark/60 mb-1">您的姓名 / 公司單位</label>
-                                <input type="text" id="name" required class="w-full px-4 py-3 bg-brand-beige border border-brand-lightaccent text-sm rounded-lg focus:outline-none focus:border-brand-accent transition-colors">
-                            </div>
-                            <div>
-                                <label for="email" class="block text-xs font-medium text-brand-dark/60 mb-1">您的聯絡信箱</label>
-                                <input type="email" id="email" required class="w-full px-4 py-3 bg-brand-beige border border-brand-lightaccent text-sm rounded-lg focus:outline-none focus:border-brand-accent transition-colors">
-                            </div>
-                            <div>
-                                <label for="message" class="block text-xs font-medium text-brand-dark/60 mb-1">訊息內容</label>
-                                <textarea id="message" rows="4" required class="w-full px-4 py-3 bg-brand-beige border border-brand-lightaccent text-sm rounded-lg focus:outline-none focus:border-brand-accent transition-colors resize-none"></textarea>
-                            </div>
-                            <button type="submit" class="w-full py-3 bg-brand-dark text-brand-beige font-medium text-sm rounded-lg hover:bg-brand-accent transition-all duration-300 shadow-md">
-                                送出訊息
-                            </button>
-                        </form>
-                        
-                        <!-- 成功送出提示區（預設隱藏） -->
-                        <div id="successAlert" class="hidden mt-4 p-4 bg-emerald-50 border border-emerald-200 rounded-lg flex items-center space-x-3 text-emerald-800">
-                            <i class="fa-solid fa-circle-check text-lg"></i>
-                            <p class="text-xs font-medium">感謝您的來信！訊息已模擬發送，並會自動為您開啟電子郵件視窗。</p>
-                        </div>
+                <!-- 作品 2 -->
+                <div class="bg-white rounded-2xl overflow-hidden premium-shadow-sm border border-brand-accent/5 group">
+                    <div class="aspect-video bg-stone-100 flex flex-col items-center justify-center text-stone-400 p-4 border-b border-stone-100 relative overflow-hidden">
+                        <i class="fa-solid fa-chart-line text-3xl mb-2 group-hover:scale-110 transition-transform duration-300"></i>
+                        <span class="text-xs font-medium">Excel 數據報表佔位區</span>
+                        <div class="absolute inset-0 bg-brand-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-stone-800 text-base mb-1 group-hover:text-brand-accent transition-colors">數據分析與自動化處理</h3>
+                        <p class="text-xs text-stone-400 mb-3">#函數公式 #樞紐分析</p>
+                        <p class="text-xs text-stone-500 leading-relaxed">
+                            結合 MOS Excel 函數工具與交叉篩選功能，設計出自動化銷售報表與績效分析儀表板，大幅縮短人工校對數據與製作圖表的時間。
+                        </p>
+                    </div>
+                </div>
 
+                <!-- 作品 3 -->
+                <div class="bg-white rounded-2xl overflow-hidden premium-shadow-sm border border-brand-accent/5 group">
+                    <div class="aspect-video bg-stone-100 flex flex-col items-center justify-center text-stone-400 p-4 border-b border-stone-100 relative overflow-hidden">
+                        <i class="fa-regular fa-file-lines text-3xl mb-2 group-hover:scale-110 transition-transform duration-300"></i>
+                        <span class="text-xs font-medium">Word 文書系統佔位區</span>
+                        <div class="absolute inset-0 bg-brand-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-stone-800 text-base mb-1 group-hover:text-brand-accent transition-colors">商用文書規範編排手冊</h3>
+                        <p class="text-xs text-stone-400 mb-3">#公文規範 #排版自動化</p>
+                        <p class="text-xs text-stone-500 leading-relaxed">
+                            嚴格依據大會或商業規格編纂排版的手冊作品。展現目錄多層級索引、精緻圖表、郵件合併等核心 Word 文書處理技術。
+                        </p>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-    </main>
+    <!-- 聯絡方式與直達互動表單 (Contact) -->
+    <section id="contact" class="py-16">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-2xl font-bold mb-2 text-center flex items-center justify-center gap-2">
+                <i class="fa-regular fa-envelope text-brand-accent text-xl"></i>
+                聯絡方式 ‧ Contact
+            </h2>
+            <p class="text-center text-sm text-stone-400 mb-10">歡迎隨時與我聯繫，期待與您的合作！</p>
+            
+            <div class="grid md:grid-cols-5 gap-8">
+                <!-- 聯絡資訊 -->
+                <div class="md:col-span-2 flex flex-col justify-center space-y-6">
+                    <div class="bg-white p-6 rounded-2xl premium-shadow border border-brand-accent/5">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-brand-accent/10 flex items-center justify-center text-brand-accent">
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xs text-stone-400">電子郵件</h3>
+                                <p class="font-medium text-stone-800 text-sm break-all">jkes48822789@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-2">
+                            <a href="mailto:jkes48822789@gmail.com" class="flex-1 py-2 bg-brand-accent/10 hover:bg-brand-accent text-brand-accent hover:text-white transition-all text-xs text-center font-medium rounded-lg">
+                                <i class="fa-regular fa-envelope mr-1"></i> 直接寄信
+                            </a>
+                            <button onclick="copyToClipboard('jkes48822789@gmail.com', 'Email')" class="px-3 py-2 border border-brand-accent/20 hover:bg-brand-accent/5 rounded-lg text-brand-accent text-xs">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
 
-    <!-- 頁腳 -->
-    <footer class="bg-brand-dark text-brand-beige/50 py-8 border-t border-brand-dark/10 text-center text-xs">
-        <div class="max-w-4xl mx-auto px-6 space-y-2">
-            <p class="text-brand-beige/80 font-medium">© 2026 葉奇昌 Yeh Chi-Chang. All Rights Reserved.</p>
-            <p>持續成長與發揮價值的實踐者。</p>
+                    <div class="bg-white p-6 rounded-2xl premium-shadow border border-brand-accent/5">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-brand-accent/10 flex items-center justify-center text-brand-accent">
+                                <i class="fa-solid fa-mobile-screen-button"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xs text-stone-400">手機號碼</h3>
+                                <p class="font-medium text-stone-800 text-sm">0966-667-565</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-2">
+                            <a href="tel:0966667565" class="flex-1 py-2 bg-brand-accent/10 hover:bg-brand-accent text-brand-accent hover:text-white transition-all text-xs text-center font-medium rounded-lg">
+                                <i class="fa-solid fa-phone mr-1"></i> 撥打電話
+                            </a>
+                            <button onclick="copyToClipboard('0966667565', '手機號碼')" class="px-3 py-2 border border-brand-accent/20 hover:bg-brand-accent/5 rounded-lg text-brand-accent text-xs">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 聯絡表單 -->
+                <div class="md:col-span-3">
+                    <form onsubmit="handleFormSubmit(event)" class="bg-white p-6 rounded-2xl premium-shadow border border-brand-accent/5 space-y-4">
+                        <h3 class="font-bold text-stone-800 text-base mb-2">快速留言給我</h3>
+                        <div>
+                            <label class="block text-xs text-stone-400 mb-1">您的姓名 / 貴司名稱</label>
+                            <input type="text" id="contact-name" required class="w-full px-4 py-2 bg-stone-50 border border-stone-200 rounded-xl focus:outline-none focus:border-brand-accent/50 text-sm" placeholder="例：王經理 / ○○股份有限公司">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-stone-400 mb-1">您的電子信箱</label>
+                            <input type="email" id="contact-email" required class="w-full px-4 py-2 bg-stone-50 border border-stone-200 rounded-xl focus:outline-none focus:border-brand-accent/50 text-sm" placeholder="例：hr@company.com">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-stone-400 mb-1">洽談內容</label>
+                            <textarea id="contact-message" rows="3" required class="w-full px-4 py-2 bg-stone-50 border border-stone-200 rounded-xl focus:outline-none focus:border-brand-accent/50 text-sm resize-none" placeholder="我想邀約面試/進一步洽談..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-2.5 bg-brand-accent hover:bg-brand-accent/90 text-white font-medium text-sm rounded-xl transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2">
+                            <i class="fa-regular fa-paper-plane"></i> 傳送留言
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁尾 (Footer) -->
+    <footer class="bg-stone-900 text-stone-400 py-8 border-t border-stone-800 text-center">
+        <div class="max-w-4xl mx-auto px-6 text-xs space-y-2">
+            <p class="text-stone-300">葉奇昌 ‧ 數位履歷個人介紹單頁</p>
+            <p>© 2026 Yee Chi-Chang. All Rights Reserved.</p>
         </div>
     </footer>
 
-    <!-- 互動式 JavaScript 控制 -->
+    <!-- 全局提示框 (Toast) -->
+    <div id="toast" class="fixed bottom-5 left-1/2 -translate-x-1/2 bg-stone-900/90 text-white text-xs px-4 py-2.5 rounded-full shadow-xl flex items-center gap-2 transition-all duration-300 transform translate-y-20 opacity-0 pointer-events-none z-50">
+        <i class="fa-solid fa-circle-check text-green-400"></i>
+        <span id="toast-text">已成功複製</span>
+    </div>
+
     <script>
-        // 表單提交處理 - 整合實際郵件發送模擬
-        function handleFormSubmit(event) {
-            event.preventDefault();
-            
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-
-            if (name && email && message) {
-                // 顯示成功提示
-                const alertBox = document.getElementById('successAlert');
-                alertBox.classList.remove('hidden');
-                
-                // 動態組裝 mailto 連結
-                const subject = encodeURIComponent(`【聯絡主旨】來自 portfolio 網站的聯繫 - ${name}`);
-                const body = encodeURIComponent(`您好，我是 ${name}\n我的聯絡信箱是：${email}\n\n訊息內容：\n${message}`);
-                
-                // 模擬信件送出：2秒後彈出信箱撰寫視窗
-                setTimeout(() => {
-                    window.location.href = `mailto:jkes48822789@gmail.com?subject=${subject}&body=${body}`;
-                }, 1500);
-
-                // 重設表單
-                document.getElementById('contactForm').reset();
-
-                // 6秒後自動隱藏提示
-                setTimeout(() => {
-                    alertBox.classList.add('hidden');
-                }, 6000);
+        // 圖片讀取失敗處理
+        function handleAvatarError() {
+            const avatarImg = document.getElementById('avatar');
+            const fallbackDiv = document.getElementById('avatar-fallback');
+            if (avatarImg && fallbackDiv) {
+                avatarImg.style.display = 'none';
+                fallbackDiv.classList.remove('hidden');
             }
         }
 
-        // 複製文字至剪貼簿
+        // 複製至剪貼簿
         function copyToClipboard(text, type) {
-            // 建立臨時 textarea 用於複製，以避開 iFrame 的特定權限限制
-            const tempTextArea = document.createElement("textarea");
-            tempTextArea.value = text;
-            document.body.appendChild(tempTextArea);
-            tempTextArea.select();
-            
-            try {
-                const successful = document.execCommand('copy');
-                if (successful) {
-                    const icon = document.getElementById(`copy-icon-${type}`);
-                    // 變更為成功打勾圖示
-                    icon.className = 'fa-solid fa-check text-emerald-600';
-                    
-                    setTimeout(() => {
-                        icon.className = 'fa-regular fa-copy';
-                    }, 2000);
-                }
-            } catch (err) {
-                console.error('無法複製文字：', err);
+            const tempInput = document.createElement('input');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            showToast(`已複製您的 ${type}：${text}`);
+        }
+
+        // 顯示 Toast 提示
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastText = document.getElementById('toast-text');
+            if (toast && toastText) {
+                toastText.innerText = message;
+                toast.classList.remove('translate-y-20', 'opacity-0');
+                toast.classList.add('translate-y-0', 'opacity-100');
+                
+                setTimeout(() => {
+                    toast.classList.remove('translate-y-0', 'opacity-100');
+                    toast.classList.add('translate-y-20', 'opacity-0');
+                }, 3000);
             }
+        }
+
+        // 提交表單處理 (整合 mailto 便民服務)
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('contact-name').value;
+            const email = document.getElementById('contact-email').value;
+            const message = document.getElementById('contact-message').value;
+
+            showToast("感謝您的留言！正在為您開啟電郵軟體...");
+
+            // 自動產出對應的信件草稿格式
+            const subject = encodeURIComponent(`【應徵/面試洽談】來自葉奇昌網頁平台的聯繫`);
+            const body = encodeURIComponent(`您好，我是：${name}\n電子信箱：${email}\n\n洽談內容：\n${message}`);
             
-            document.body.removeChild(tempTextArea);
+            setTimeout(() => {
+                window.location.href = `mailto:jkes48822789@gmail.com?subject=${subject}&body=${body}`;
+            }, 1500);
         }
     </script>
 </body>
