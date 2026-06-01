@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hant-TW">
+<html lang="zh-Hant-TW" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -45,16 +45,26 @@
         .premium-shadow-sm {
             box-shadow: 0 4px 15px -3px rgba(140, 120, 83, 0.08);
         }
+        /* 美化滾動條 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FDFBF7;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(140, 120, 83, 0.4);
+            border-radius: 4px;
+        }
     </style>
 </head>
 <body class="text-brand-dark min-h-screen selection:bg-brand-accent/20 selection:text-brand-accent">
 
-    <!-- 導覽列 -->
+    <!-- 導覽列 (完美符合 image_40b751.png) -->
     <nav class="sticky top-0 z-50 bg-brand-beige/80 backdrop-blur-md border-b border-brand-accent/10">
         <div class="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
             <a href="#" class="font-bold text-lg tracking-wider text-brand-accent flex items-center gap-2">
                 <span>YEH CHI-CHANG</span>
-                
             </a>
             <div class="flex space-x-6 text-sm font-medium">
                 <a href="#about" class="hover:text-brand-accent transition-colors duration-200">關於我</a>
@@ -65,30 +75,25 @@
         </div>
     </nav>
 
-    <!-- 主視覺 Banner (Hero Section) -->
+    <!-- 主視覺 Banner (Hero Section 完美符合 image_40b751.png) -->
     <section class="max-w-4xl mx-auto px-6 py-12 md:py-20 flex flex-col items-center text-center">
-        <!-- 個人頭像容器 (帶有動態讀取圈效果) -->
-        <div class="relative w-36 h-36 md:w-40 md:h-40 rounded-full p-1.5 bg-gradient-to-tr from-brand-accent to-brand-accent/30 premium-shadow mb-6 group overflow-hidden">
-            <!-- 實體照片讀取：已更新為您的正確資料夾與檔名 Image/profile2.jpg -->
+        <!-- 個人頭像容器 (高質感圓形金色細邊框) -->
+        <div class="relative w-36 h-36 md:w-40 md:h-40 rounded-full border-[5px] border-brand-accent/30 premium-shadow mb-6 overflow-hidden bg-stone-100 flex items-center justify-center">
+            <!-- 實體照片讀取：已綁定您的 GitHub 絕對網址 -->
             <img 
-                src="Image/profile2.jpg" 
+                src="https://jkes48822789-cmyk.github.io/Portfolio/Image/profile2.jpg" 
                 alt="葉奇昌" 
                 id="avatar"
-                class="w-full h-full object-cover rounded-full transition-transform duration-500 group-hover:scale-105"
+                class="w-full h-full object-cover rounded-full"
                 onerror="handleAvatarError()"
             >
             <!-- 骨架屏/預留加載與替代圖 -->
             <div id="avatar-fallback" class="hidden w-full h-full rounded-full bg-gradient-to-br from-brand-accent/20 to-brand-accent/5 flex items-center justify-center">
                 <span class="text-brand-accent font-bold text-3xl">奇昌</span>
             </div>
-            
-            <!-- 實時同步小徽章 -->
-            <div id="sync-badge" class="absolute bottom-2 right-2 bg-brand-accent text-white w-6 h-6 rounded-full flex items-center justify-center text-[10px] shadow-lg border-2 border-brand-beige" title="GitHub 照片已實時同步更新">
-                <i class="fa-solid fa-rotate animate-spin"></i>
-            </div>
         </div>
 
-        <h1 class="text-3xl md:text-4xl font-bold tracking-tight mb-2">葉奇昌</h1>
+        <h1 class="text-3xl md:text-4xl font-bold tracking-tight mb-2 text-stone-800">葉奇昌</h1>
         <p class="text-brand-accent font-medium text-lg md:text-xl tracking-widest mb-6">細心負責 ‧ 踏實穩健 ‧ 持續自我挑戰的資訊行政專才</p>
         
         <div class="h-[1px] w-20 bg-brand-accent/30 mb-6"></div>
@@ -98,10 +103,10 @@
         </p>
     </section>
 
-    <!-- 關於我 (About Me) -->
+    <!-- 關於我 (About Me 完美符合 image_40b717.png) -->
     <section id="about" class="bg-stone-50 py-16 border-y border-brand-accent/5">
         <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-2xl font-bold mb-10 text-center flex items-center justify-center gap-2">
+            <h2 class="text-2xl font-bold mb-10 text-center flex items-center justify-center gap-2 text-stone-800">
                 <i class="fa-regular fa-user text-brand-accent text-xl"></i>
                 個人特質 ‧ About Me
             </h2>
@@ -143,7 +148,7 @@
                 <!-- 特質 4 -->
                 <div class="bg-white p-6 rounded-2xl premium-shadow-sm border border-brand-accent/5 flex gap-4">
                     <div class="w-10 h-10 rounded-xl bg-brand-accent/10 flex items-center justify-center shrink-0">
-                        <i class="fa-solid fa-arrow-up-right-path text-brand-accent"></i>
+                        <i class="fa-solid fa-arrows-spin text-brand-accent"></i>
                     </div>
                     <div>
                         <h3 class="font-bold text-stone-800 mb-1">耐壓成長，不懈調整</h3>
@@ -152,6 +157,7 @@
                 </div>
             </div>
             
+            <!-- 經典引言區塊 (完美符合 image_40b717.png) -->
             <div class="mt-8 bg-brand-accent/5 p-6 rounded-2xl border border-brand-accent/10 text-center max-w-2xl mx-auto">
                 <i class="fa-solid fa-quote-left text-brand-accent/30 text-2xl mb-2 block"></i>
                 <p class="text-sm md:text-base text-brand-accent font-medium italic">
@@ -161,77 +167,54 @@
         </div>
     </section>
 
-    <!-- 三項專業技能 (MOS Certification) -->
+    <!-- 專業認證快捷入口 (替代原先三格 MOS 卡片並連結至 image_0e731f.png 頁面) -->
     <section id="skills" class="py-16">
         <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-2xl font-bold mb-2 text-center flex items-center justify-center gap-2">
+            <h2 class="text-2xl font-bold mb-2 text-center flex items-center justify-center gap-2 text-stone-800">
                 <i class="fa-solid fa-award text-brand-accent text-xl"></i>
                 專業認證 ‧ Certification
             </h2>
-            <p class="text-center text-sm text-stone-400 mb-10">Microsoft Office Specialist 核心軟體專業實力</p>
+            <p class="text-center text-sm text-stone-400 mb-10">Microsoft Office Specialist 國際專業軟體認證</p>
             
-            <div class="grid md:grid-cols-3 gap-6">
-                <!-- PPT -->
-                <div class="bg-white p-6 rounded-2xl premium-shadow border-t-4 border-brand-powerpoint hover:-translate-y-1 transition-transform duration-300">
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="w-12 h-12 rounded-xl bg-brand-powerpoint/10 flex items-center justify-center">
-                            <i class="fa-regular fa-file-powerpoint text-brand-powerpoint text-2xl"></i>
-                        </div>
-                        <span class="text-xs font-semibold px-2.5 py-1 bg-brand-powerpoint/10 text-brand-powerpoint rounded-full">MOS 認證</span>
-                    </div>
-                    <h3 class="font-bold text-lg text-stone-800 mb-2">PowerPoint</h3>
-                    <p class="text-xs text-stone-500 leading-relaxed">
-                        精通簡報排版與視覺邏輯，能靈活運用母片、動畫以及流暢的簡報結構，為商業提案、報告或成果發表打造專業吸睛的演示。
+            <!-- 證照網頁直達捷徑 (精心設計之大 Banner 卡片) -->
+            <div class="max-w-3xl mx-auto bg-white p-8 md:p-10 rounded-2xl premium-shadow border border-brand-accent/10 flex flex-col md:flex-row items-center justify-between gap-6 hover:border-brand-accent/30 transition-all duration-300">
+                <div class="space-y-3 text-center md:text-left">
+                    <span class="text-xs font-semibold px-2.5 py-1 bg-brand-accent/10 text-brand-accent rounded-full">MOS 國際認證</span>
+                    <h3 class="font-bold text-xl md:text-2xl text-stone-800">專業證照數位展示館</h3>
+                    <p class="text-sm text-stone-500 leading-relaxed max-w-md">
+                        此空間集中展示葉奇昌所考取之 Certoport 官方核發 Microsoft Office Specialist 國際認證。所有證照皆提供原廠驗證與實體檔案對照，展現踏實穩健的專業軟力。
                     </p>
                 </div>
-
-                <!-- Word -->
-                <div class="bg-white p-6 rounded-2xl premium-shadow border-t-4 border-brand-word hover:-translate-y-1 transition-transform duration-300">
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="w-12 h-12 rounded-xl bg-brand-word/10 flex items-center justify-center">
-                            <i class="fa-regular fa-file-word text-brand-word text-2xl"></i>
-                        </div>
-                        <span class="text-xs font-semibold px-2.5 py-1 bg-brand-word/10 text-brand-word rounded-full">MOS 認證</span>
-                    </div>
-                    <h3 class="font-bold text-lg text-stone-800 mb-2">Word</h3>
-                    <p class="text-xs text-stone-500 leading-relaxed">
-                        擅長結構化排版、大型文件製作、套印信件、多層次清單、樣式表設計及精細編排，確保各式行政公文與報告書皆能美觀且標準。
-                    </p>
-                </div>
-
-                <!-- Excel -->
-                <div class="bg-white p-6 rounded-2xl premium-shadow border-t-4 border-brand-excel hover:-translate-y-1 transition-transform duration-300">
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="w-12 h-12 rounded-xl bg-brand-excel/10 flex items-center justify-center">
-                            <i class="fa-regular fa-file-excel text-brand-excel text-2xl"></i>
-                        </div>
-                        <span class="text-xs font-semibold px-2.5 py-1 bg-brand-excel/10 text-brand-excel rounded-full">MOS 認證</span>
-                    </div>
-                    <h3 class="font-bold text-lg text-stone-800 mb-2">Excel</h3>
-                    <p class="text-xs text-stone-500 leading-relaxed">
-                        掌握數據分析及函數管理，善用樞紐分析表、進階圖表和資料篩選與格式化，快速且精準地彙整大型報表、解讀關鍵業務數據。
-                    </p>
+                <div class="shrink-0">
+                    <a href="https://jkes48822789-cmyk.github.io/test/index.html" target="_blank" class="px-6 py-3 bg-brand-accent hover:bg-brand-accent/90 text-white font-medium text-sm rounded-xl transition-all shadow-md hover:shadow-lg flex items-center gap-2">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> 進入數位展示館
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 3個作品占位區 (Portfolio) -->
+    <!-- 3個作品專案區 (Portfolio 完美符合 image_40b6f9.png 且自動對應實體檔案路徑) -->
     <section id="portfolio" class="bg-stone-50 py-16 border-t border-brand-accent/5">
         <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-2xl font-bold mb-2 text-center flex items-center justify-center gap-2">
+            <h2 class="text-2xl font-bold mb-2 text-center flex items-center justify-center gap-2 text-stone-800">
                 <i class="fa-solid fa-briefcase text-brand-accent text-xl"></i>
                 專案作品 ‧ Portfolio
             </h2>
             <p class="text-center text-sm text-stone-400 mb-10">累積實務成果與專業產出展示</p>
             
             <div class="grid md:grid-cols-3 gap-6">
-                <!-- 作品 1 -->
+                <!-- 作品 1 - PowerPoint -->
                 <div class="bg-white rounded-2xl overflow-hidden premium-shadow-sm border border-brand-accent/5 group">
-                    <div class="aspect-video bg-stone-100 flex flex-col items-center justify-center text-stone-400 p-4 border-b border-stone-100 relative overflow-hidden">
-                        <i class="fa-regular fa-images text-3xl mb-2 group-hover:scale-110 transition-transform duration-300"></i>
-                        <span class="text-xs font-medium">PowerPoint 作品佔位區</span>
-                        <div class="absolute inset-0 bg-brand-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="aspect-video bg-stone-100 relative overflow-hidden flex items-center justify-center min-h-[140px]">
+                        <!-- 實體加載：加載 PowerPoint001.jpg -->
+                        <img 
+                            id="ppt-img" 
+                            src="Image/PowerPoint001.jpg" 
+                            alt="簡報大師特訓作品" 
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            onerror="handlePortfolioError(this, 'fa-regular fa-images', 'PowerPoint 作品')"
+                        >
                     </div>
                     <div class="p-5">
                         <h3 class="font-bold text-stone-800 text-base mb-1 group-hover:text-brand-accent transition-colors">簡報大師特訓作品</h3>
@@ -242,12 +225,17 @@
                     </div>
                 </div>
 
-                <!-- 作品 2 -->
+                <!-- 作品 2 - Excel -->
                 <div class="bg-white rounded-2xl overflow-hidden premium-shadow-sm border border-brand-accent/5 group">
-                    <div class="aspect-video bg-stone-100 flex flex-col items-center justify-center text-stone-400 p-4 border-b border-stone-100 relative overflow-hidden">
-                        <i class="fa-solid fa-chart-line text-3xl mb-2 group-hover:scale-110 transition-transform duration-300"></i>
-                        <span class="text-xs font-medium">Excel 數據報表佔位區</span>
-                        <div class="absolute inset-0 bg-brand-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="aspect-video bg-stone-100 relative overflow-hidden flex items-center justify-center min-h-[140px]">
+                        <!-- 實體加載：加載 Excel001.jpg -->
+                        <img 
+                            id="excel-img" 
+                            src="Image/Excel001.jpg" 
+                            alt="數據分析與自動化處理" 
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            onerror="handlePortfolioError(this, 'fa-solid fa-chart-line', 'Excel 數據報表')"
+                        >
                     </div>
                     <div class="p-5">
                         <h3 class="font-bold text-stone-800 text-base mb-1 group-hover:text-brand-accent transition-colors">數據分析與自動化處理</h3>
@@ -258,12 +246,17 @@
                     </div>
                 </div>
 
-                <!-- 作品 3 -->
+                <!-- 作品 3 - Word -->
                 <div class="bg-white rounded-2xl overflow-hidden premium-shadow-sm border border-brand-accent/5 group">
-                    <div class="aspect-video bg-stone-100 flex flex-col items-center justify-center text-stone-400 p-4 border-b border-stone-100 relative overflow-hidden">
-                        <i class="fa-regular fa-file-lines text-3xl mb-2 group-hover:scale-110 transition-transform duration-300"></i>
-                        <span class="text-xs font-medium">Word 文書系統佔位區</span>
-                        <div class="absolute inset-0 bg-brand-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="aspect-video bg-stone-100 relative overflow-hidden flex items-center justify-center min-h-[140px]">
+                        <!-- 實體加載：加載 word001.jpg -->
+                        <img 
+                            id="word-img" 
+                            src="Image/word001.jpg" 
+                            alt="商用文書規範編排手冊" 
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            onerror="handlePortfolioError(this, 'fa-regular fa-file-lines', 'Word 文書系統')"
+                        >
                     </div>
                     <div class="p-5">
                         <h3 class="font-bold text-stone-800 text-base mb-1 group-hover:text-brand-accent transition-colors">商用文書規範編排手冊</h3>
@@ -277,10 +270,10 @@
         </div>
     </section>
 
-    <!-- 聯絡方式與直達互動表單 (Contact) -->
+    <!-- 聯絡方式與直達互動表單 (Contact 完美符合 image_40b69a.png) -->
     <section id="contact" class="py-16">
         <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-2xl font-bold mb-2 text-center flex items-center justify-center gap-2">
+            <h2 class="text-2xl font-bold mb-2 text-center flex items-center justify-center gap-2 text-stone-800">
                 <i class="fa-regular fa-envelope text-brand-accent text-xl"></i>
                 聯絡方式 ‧ Contact
             </h2>
@@ -289,41 +282,43 @@
             <div class="grid md:grid-cols-5 gap-8">
                 <!-- 聯絡資訊 -->
                 <div class="md:col-span-2 flex flex-col justify-center space-y-6">
+                    <!-- 信箱卡片 -->
                     <div class="bg-white p-6 rounded-2xl premium-shadow border border-brand-accent/5">
                         <div class="flex items-center gap-4 mb-4">
-                            <div class="w-10 h-10 rounded-xl bg-brand-accent/10 flex items-center justify-center text-brand-accent">
+                            <div class="w-10 h-10 rounded-xl bg-brand-accent/10 flex items-center justify-center text-brand-accent shrink-0">
                                 <i class="fa-solid fa-paper-plane"></i>
                             </div>
                             <div>
                                 <h3 class="text-xs text-stone-400">電子郵件</h3>
-                                <p class="font-medium text-stone-800 text-sm break-all">jkes48822789@gmail.com</p>
+                                <p class="font-semibold text-stone-800 text-sm break-all">jkes48822789@gmail.com</p>
                             </div>
                         </div>
                         <div class="flex gap-2">
-                            <a href="mailto:jkes48822789@gmail.com" class="flex-1 py-2 bg-brand-accent/10 hover:bg-brand-accent text-brand-accent hover:text-white transition-all text-xs text-center font-medium rounded-lg">
-                                <i class="fa-regular fa-envelope mr-1"></i> 直接寄信
+                            <a href="mailto:jkes48822789@gmail.com" class="flex-1 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 transition-all text-xs text-center font-medium rounded-lg flex items-center justify-center gap-1">
+                                <i class="fa-regular fa-envelope"></i> 直接寄信
                             </a>
-                            <button onclick="copyToClipboard('jkes48822789@gmail.com', 'Email')" class="px-3 py-2 border border-brand-accent/20 hover:bg-brand-accent/5 rounded-lg text-brand-accent text-xs">
+                            <button onclick="copyToClipboard('jkes48822789@gmail.com', 'Email')" class="px-3 py-2 border border-stone-200 hover:bg-stone-50 rounded-lg text-stone-500 text-xs transition-colors" title="複製信箱">
                                 <i class="fa-regular fa-copy"></i>
                             </button>
                         </div>
                     </div>
 
+                    <!-- 電話卡片 -->
                     <div class="bg-white p-6 rounded-2xl premium-shadow border border-brand-accent/5">
                         <div class="flex items-center gap-4 mb-4">
-                            <div class="w-10 h-10 rounded-xl bg-brand-accent/10 flex items-center justify-center text-brand-accent">
+                            <div class="w-10 h-10 rounded-xl bg-brand-accent/10 flex items-center justify-center text-brand-accent shrink-0">
                                 <i class="fa-solid fa-mobile-screen-button"></i>
                             </div>
                             <div>
                                 <h3 class="text-xs text-stone-400">手機號碼</h3>
-                                <p class="font-medium text-stone-800 text-sm">0966-667-565</p>
+                                <p class="font-semibold text-stone-800 text-sm">0966-667-565</p>
                             </div>
                         </div>
                         <div class="flex gap-2">
-                            <a href="tel:0966667565" class="flex-1 py-2 bg-brand-accent/10 hover:bg-brand-accent text-brand-accent hover:text-white transition-all text-xs text-center font-medium rounded-lg">
-                                <i class="fa-solid fa-phone mr-1"></i> 撥打電話
+                            <a href="tel:0966667565" class="flex-1 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 transition-all text-xs text-center font-medium rounded-lg flex items-center justify-center gap-1">
+                                <i class="fa-solid fa-phone"></i> 撥打電話
                             </a>
-                            <button onclick="copyToClipboard('0966667565', '手機號碼')" class="px-3 py-2 border border-brand-accent/20 hover:bg-brand-accent/5 rounded-lg text-brand-accent text-xs">
+                            <button onclick="copyToClipboard('0966667565', '手機號碼')" class="px-3 py-2 border border-stone-200 hover:bg-stone-50 rounded-lg text-stone-500 text-xs transition-colors" title="複製電話號碼">
                                 <i class="fa-regular fa-copy"></i>
                             </button>
                         </div>
@@ -336,46 +331,20 @@
                         <h3 class="font-bold text-stone-800 text-base mb-2">快速留言給我</h3>
                         <div>
                             <label class="block text-xs text-stone-400 mb-1">您的姓名 / 貴司名稱</label>
-                            <input type="text" id="contact-name" required class="w-full px-4 py-2 bg-stone-50 border border-stone-200 rounded-xl focus:outline-none focus:border-brand-accent/50 text-sm" placeholder="例：王經理 / ○○股份有限公司">
+                            <input type="text" id="contact-name" required class="w-full px-4 py-2 bg-stone-50 border border-stone-200 rounded-xl focus:outline-none focus:border-brand-accent/50 text-sm transition-colors" placeholder="例：王經理 / ○○股份有限公司">
                         </div>
                         <div>
                             <label class="block text-xs text-stone-400 mb-1">您的電子信箱</label>
-                            <input type="email" id="contact-email" required class="w-full px-4 py-2 bg-stone-50 border border-stone-200 rounded-xl focus:outline-none focus:border-brand-accent/50 text-sm" placeholder="例：hr@company.com">
+                            <input type="email" id="contact-email" required class="w-full px-4 py-2 bg-stone-50 border border-stone-200 rounded-xl focus:outline-none focus:border-brand-accent/50 text-sm transition-colors" placeholder="例：hr@company.com">
                         </div>
                         <div>
                             <label class="block text-xs text-stone-400 mb-1">洽談內容</label>
-                            <textarea id="contact-message" rows="3" required class="w-full px-4 py-2 bg-stone-50 border border-stone-200 rounded-xl focus:outline-none focus:border-brand-accent/50 text-sm resize-none" placeholder="我想邀約面試/進一步洽談..."></textarea>
+                            <textarea id="contact-message" rows="3" required class="w-full px-4 py-2 bg-stone-50 border border-stone-200 rounded-xl focus:outline-none focus:border-brand-accent/50 text-sm resize-none transition-colors" placeholder="我想邀約面試/進一步洽談..."></textarea>
                         </div>
                         <button type="submit" class="w-full py-2.5 bg-brand-accent hover:bg-brand-accent/90 text-white font-medium text-sm rounded-xl transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2">
                             <i class="fa-regular fa-paper-plane"></i> 傳送留言
                         </button>
                     </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- GitHub 儲存庫實時追蹤狀態列 (動態感知) -->
-    <section class="bg-stone-100 py-8 border-t border-brand-accent/5">
-        <div class="max-w-4xl mx-auto px-6">
-            <div class="bg-white rounded-xl p-4 premium-shadow-sm border border-stone-200 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
-                <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 rounded-lg bg-stone-900 text-white flex items-center justify-center text-sm shrink-0">
-                        <i class="fa-brands fa-github"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold text-stone-800 flex items-center gap-1">
-                            GitHub 儲存庫實時監測 
-                            <span id="repo-status" class="text-[10px] bg-yellow-100 text-yellow-800 px-1.5 py-0.2 rounded font-mono">載入中...</span>
-                        </h4>
-                        <p id="repo-commit-msg" class="text-stone-500 italic mt-0.5">正在與 GitHub 網路同步中...</p>
-                    </div>
-                </div>
-                <div class="flex items-center gap-4 text-stone-500 shrink-0">
-                    <span id="repo-updated" class="flex items-center gap-1"><i class="fa-regular fa-clock"></i> 讀取中</span>
-                    <a id="repo-link" href="https://github.com" target="_blank" class="px-3 py-1.5 bg-stone-900 text-white rounded-lg hover:bg-stone-800 transition-colors flex items-center gap-1">
-                        <i class="fa-solid fa-code-branch"></i> 前往儲存庫
-                    </a>
                 </div>
             </div>
         </div>
@@ -396,27 +365,11 @@
     </div>
 
     <script>
-        // 1. 實時照片快取排除與儲存庫動態探針技術
+        // 1. 實時照片與作品動態快取排除技術
         document.addEventListener('DOMContentLoaded', function() {
-            // 解析當前網頁所在的 GitHub 資訊
-            const currentUrl = window.location.href;
-            let githubUsername = "jkes48822789-cmyk"; // 根據您的截圖更新為正確帳號
-            let githubRepoName = "Portfolio";         // 根據您的截圖更新為正確儲存庫名稱
+            const githubUsername = "jkes48822789-cmyk"; 
+            const githubRepoName = "Portfolio";         
             
-            // 嘗試從 URL 自動剖析真實部署路徑
-            if (currentUrl.includes("github.io")) {
-                try {
-                    const domainParts = window.location.hostname.split('.');
-                    githubUsername = domainParts[0];
-                    const pathParts = window.location.pathname.split('/').filter(Boolean);
-                    if (pathParts.length > 0) {
-                        githubRepoName = pathParts[0];
-                    }
-                } catch(e) {
-                    console.error("無法剖析 GitHub 網址路徑", e);
-                }
-            }
-
             const apiEndpoint = `https://api.github.com/repos/${githubUsername}/${githubRepoName}`;
 
             fetch(apiEndpoint)
@@ -428,9 +381,8 @@
                     }
                     
                     const repoFullName = repoData.full_name;
-                    const repoUrl = repoData.html_url;
                     
-                    // 獲取該儲存庫的最新提交記錄 (Commit)
+                    // 獲取該儲存庫 main 分支最新提交紀錄 (Commit)
                     return fetch(`https://api.github.com/repos/${repoFullName}/commits/main`)
                         .then(res => {
                             if (!res.ok) {
@@ -440,51 +392,50 @@
                         })
                         .then(res => res.json())
                         .then(commitData => {
-                            // 取得最新 Commit 的 SHA 作為獨一無二的快取排除字串 (Cache Buster)
+                            // 取得最新 Commit SHA 當作 Cache Buster
                             const latestSha = commitData.sha ? commitData.sha.substring(0, 7) : Date.now();
-                            const commitMessage = commitData.commit ? commitData.commit.message : "更新照片與網頁架構";
-                            const commitDate = commitData.commit?.author?.date 
-                                ? new Date(commitData.commit.author.date).toLocaleDateString('zh-TW', {month:'short', day:'numeric', hour:'2-digit', minute:'2-digit'})
-                                : "剛剛";
 
-                            // 【實時更新核心】路徑已精準設為 Image/profile2.jpg 並附加即時 SHA 雜湊值排除快取！
+                            // 將大頭貼與作品集圖片附加上 SHA，確保在 GitHub 更新時即時重新整理
                             const avatarImg = document.getElementById('avatar');
                             if (avatarImg) {
-                                avatarImg.src = `Image/profile2.jpg?v=${latestSha}`;
+                                avatarImg.src = `https://jkes48822789-cmyk.github.io/Portfolio/Image/profile2.jpg?v=${latestSha}`;
                             }
 
-                            // 更新底部追蹤面板的資訊
-                            document.getElementById('repo-status').innerText = `同步中 (SHA: ${latestSha})`;
-                            document.getElementById('repo-status').className = "text-[10px] bg-green-100 text-green-800 px-1.5 py-0.2 rounded font-mono";
-                            document.getElementById('repo-commit-msg').innerText = `最新動態: "${commitMessage}"`;
-                            document.getElementById('repo-updated').innerHTML = `<i class="fa-regular fa-clock"></i> 提交於 ${commitDate}`;
-                            document.getElementById('repo-link').href = repoUrl;
+                            const pptImg = document.getElementById('ppt-img');
+                            if (pptImg) {
+                                pptImg.src = `Image/PowerPoint001.jpg?v=${latestSha}`;
+                            }
 
-                            // 關閉同步旋轉特效
-                            const syncBadge = document.getElementById('sync-badge');
-                            if (syncBadge) {
-                                syncBadge.innerHTML = `<i class="fa-solid fa-check"></i>`;
-                                syncBadge.title = `已完美同步 GitHub 提交 (${latestSha})`;
-                                setTimeout(() => { syncBadge.classList.add('scale-0', 'transition-transform', 'duration-500'); }, 3000);
+                            const excelImg = document.getElementById('excel-img');
+                            if (excelImg) {
+                                excelImg.src = `Image/Excel001.jpg?v=${latestSha}`;
+                            }
+
+                            const wordImg = document.getElementById('word-img');
+                            if (wordImg) {
+                                wordImg.src = `Image/word001.jpg?v=${latestSha}`;
                             }
                         });
                 })
                 .catch(err => {
-                    console.log("GitHub API 連接限制或失敗，啟用相對路徑實時更新安全機制:", err);
-                    // 備用機制：使用毫秒時間戳記來確保本地與 GitHub 頁面照片能實時刷新
+                    console.log("GitHub API 連接限制，啟用本地安全時間戳:", err);
+                    const t = Date.now();
+                    
                     const avatarImg = document.getElementById('avatar');
                     if (avatarImg) {
-                        avatarImg.src = `Image/profile2.jpg?t=${Date.now()}`;
+                        avatarImg.src = `https://jkes48822789-cmyk.github.io/Portfolio/Image/profile2.jpg?t=${t}`;
                     }
-                    
-                    document.getElementById('repo-status').innerText = `動態同步`;
-                    document.getElementById('repo-status').className = "text-[10px] bg-blue-100 text-blue-800 px-1.5 py-0.2 rounded font-mono";
-                    document.getElementById('repo-commit-msg').innerText = `已透過本地即時安全戳記同步 Image/profile2.jpg`;
-                    document.getElementById('repo-updated').innerHTML = `<i class="fa-regular fa-clock"></i> 實時同步中`;
-                    
-                    const syncBadge = document.getElementById('sync-badge');
-                    if (syncBadge) {
-                        syncBadge.innerHTML = `<i class="fa-solid fa-bolt"></i>`;
+                    const pptImg = document.getElementById('ppt-img');
+                    if (pptImg) {
+                        pptImg.src = `Image/PowerPoint001.jpg?t=${t}`;
+                    }
+                    const excelImg = document.getElementById('excel-img');
+                    if (excelImg) {
+                        excelImg.src = `Image/Excel001.jpg?t=${t}`;
+                    }
+                    const wordImg = document.getElementById('word-img');
+                    if (wordImg) {
+                        wordImg.src = `Image/word001.jpg?t=${t}`;
                     }
                 });
         });
@@ -499,7 +450,20 @@
             }
         }
 
-        // 3. 複製至剪貼簿
+        // 3. 作品專案圖片加載失敗佔位機制
+        function handlePortfolioError(imgElement, iconClass, text) {
+            const parentContainer = imgElement.parentElement;
+            if (parentContainer) {
+                parentContainer.innerHTML = `
+                    <div class="absolute inset-0 bg-stone-100 flex flex-col items-center justify-center text-stone-400 p-4">
+                        <i class="${iconClass} text-3xl mb-2 opacity-60"></i>
+                        <span class="text-xs font-medium">${text}佔位區</span>
+                    </div>
+                `;
+            }
+        }
+
+        // 4. 複製至剪貼簿
         function copyToClipboard(text, type) {
             const tempInput = document.createElement('input');
             tempInput.value = text;
@@ -511,7 +475,7 @@
             showToast(`已複製您的 ${type}：${text}`);
         }
 
-        // 4. 顯示 Toast 提示
+        // 5. 顯示 Toast 提示
         function showToast(message) {
             const toast = document.getElementById('toast');
             const toastText = document.getElementById('toast-text');
@@ -527,7 +491,7 @@
             }
         }
 
-        // 5. 提交表單處理 (整合 mailto 服務)
+        // 6. 提交表單處理 (整合 mailto 服務)
         function handleFormSubmit(e) {
             e.preventDefault();
             const name = document.getElementById('contact-name').value;
@@ -536,7 +500,6 @@
 
             showToast("感謝您的留言！正在為您開啟電郵軟體...");
 
-            // 自動產出對應的信件草稿格式
             const subject = encodeURIComponent(`【應徵/面試洽談】來自葉奇昌網頁平台的聯繫`);
             const body = encodeURIComponent(`您好，我是：${name}\n電子信箱：${email}\n\n洽談內容：\n${message}`);
             
