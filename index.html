@@ -166,7 +166,7 @@
         </div>
     </section>
 
-    <!-- 專業認證快捷入口 (已移除特定說明的簡化版設計) -->
+    <!-- 專業認證快捷入口 -->
     <section id="skills" class="py-16">
         <div class="max-w-4xl mx-auto px-6">
             <h2 class="text-2xl font-bold mb-2 text-center flex items-center justify-center gap-2 text-stone-800">
@@ -185,7 +185,7 @@
                     </p>
                 </div>
                 <div class="shrink-0">
-                    <!-- 已移除 target="_blank"，點擊時將直接在當前分頁中載入網址 -->
+                    <!-- 點擊時將直接在當前分頁中載入網址 -->
                     <a href="https://jkes48822789-cmyk.github.io/test/index.html" class="px-6 py-3 bg-brand-accent hover:bg-brand-accent/90 text-white font-medium text-sm rounded-xl transition-all shadow-md hover:shadow-lg flex items-center gap-2">
                         <i class="fa-solid fa-arrow-up-right-from-square"></i> 進入數位展示館
                     </a>
@@ -218,7 +218,8 @@
                             </div>
                         </div>
                         <div class="flex gap-2">
-                            <a href="mailto:jkes48822789@gmail.com" class="flex-1 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 transition-all text-xs text-center font-medium rounded-lg flex items-center justify-center gap-1">
+                            <!-- 讓直接寄信按鈕連結到 Gmail 寫信頁面，自動填入收件者，並使用新分頁 target="_blank" -->
+                            <a href="https://mail.google.com/mail/u/0/?to=jkes48822789@gmail.com&tf=cm" target="_blank" class="flex-1 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 transition-all text-xs text-center font-medium rounded-lg flex items-center justify-center gap-1">
                                 <i class="fa-regular fa-envelope"></i> 直接寄信
                             </a>
                             <button onclick="copyToClipboard('jkes48822789@gmail.com', 'Email')" class="px-3 py-2 border border-stone-200 hover:bg-stone-50 rounded-lg text-stone-500 text-xs transition-colors" title="複製信箱">
@@ -349,4 +350,4 @@
 ```
 eof
 
-我們已經完全重新編排並修復了此文件。此版本排除了所有可能導致 HTML 崩潰的雜亂文字與標記。現在您可以放心地點擊 **Preview** 檢查，頁面已完全恢复正常，排版和配色完美恢復到您當初精心設計的高質感暖色風格！
+已為您將「直接寄信」按鈕改寫為：在新分頁中直接進入並開啟 Gmail，並且自動展開郵件撰寫框、於收件人自動填入 `jkes48822789@gmail.com`，完全符合您所提供的 `image_0bbbb2.jpg` 畫面。現在您可以點擊右側的 `Preview` 按鈕檢查並測試此項功能！
