@@ -7,7 +7,7 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts Noto Sans TC -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght=300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -68,6 +68,7 @@
             </a>
             <div class="flex space-x-6 text-sm font-medium">
                 <a href="#about" class="hover:text-brand-accent transition-colors duration-200">關於我</a>
+                <a href="#skills-list" class="hover:text-brand-accent transition-colors duration-200">專業技能</a>
                 <a href="#portfolio" class="hover:text-brand-accent transition-colors duration-200">專案作品</a>
                 <a href="#skills" class="hover:text-brand-accent transition-colors duration-200">專業證照</a>
                 <a href="#contact" class="hover:text-brand-accent transition-colors duration-200">聯繫我</a>
@@ -93,8 +94,9 @@
             </div>
         </div>
 
-        <!-- 僅保留姓名，刪除其餘副標、橫線與說明文字 -->
+        <!-- 姓名與自我定位介紹預留區 -->
         <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-stone-800">葉奇昌</h1>
+        <p class="text-brand-accent font-medium text-sm md:text-base tracking-widest mt-3">（自我定位介紹內容預留區）</p>
     </section>
 
     <!-- 關於我 (About Me) -->
@@ -114,8 +116,48 @@
         </div>
     </section>
 
+    <!-- 專業技能 (Professional Skills) -->
+    <section id="skills-list" class="py-16 bg-white">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-2xl font-bold mb-10 text-center flex items-center justify-center gap-2 text-stone-800">
+                <i class="fa-solid fa-laptop-code text-brand-accent text-xl"></i>
+                專業技能 ‧ Skills
+            </h2>
+            
+            <!-- 專業技能 3 格空白佔位符 -->
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- 佔位符 1 -->
+                <div class="border-2 border-dashed border-stone-200 bg-stone-50/30 rounded-2xl p-8 flex flex-col items-center justify-center text-center min-h-[220px] hover:border-brand-accent/30 hover:bg-white transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-full bg-brand-accent/5 flex items-center justify-center mb-4 text-brand-accent/60 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-screwdriver-wrench text-xl"></i>
+                    </div>
+                    <span class="text-sm font-semibold text-stone-600 mb-1">技能領域一</span>
+                    <span class="text-xs text-stone-400">（內容預留區）</span>
+                </div>
+
+                <!-- 佔位符 2 -->
+                <div class="border-2 border-dashed border-stone-200 bg-stone-50/30 rounded-2xl p-8 flex flex-col items-center justify-center text-center min-h-[220px] hover:border-brand-accent/30 hover:bg-white transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-full bg-brand-accent/5 flex items-center justify-center mb-4 text-brand-accent/60 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-gears text-xl"></i>
+                    </div>
+                    <span class="text-sm font-semibold text-stone-600 mb-1">技能領域二</span>
+                    <span class="text-xs text-stone-400">（內容預留區）</span>
+                </div>
+
+                <!-- 佔位符 3 -->
+                <div class="border-2 border-dashed border-stone-200 bg-stone-50/30 rounded-2xl p-8 flex flex-col items-center justify-center text-center min-h-[220px] hover:border-brand-accent/30 hover:bg-white transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-full bg-brand-accent/5 flex items-center justify-center mb-4 text-brand-accent/60 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-display text-xl"></i>
+                    </div>
+                    <span class="text-sm font-semibold text-stone-600 mb-1">技能領域三</span>
+                    <span class="text-xs text-stone-400">（內容預留區）</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- 專案作品 (Portfolio) -->
-    <section id="portfolio" class="py-16 bg-white">
+    <section id="portfolio" class="py-16 bg-stone-50 border-t border-brand-accent/5">
         <div class="max-w-4xl mx-auto px-6">
             <h2 class="text-2xl font-bold mb-10 text-center flex items-center justify-center gap-2 text-stone-800">
                 專案作品
@@ -123,19 +165,19 @@
             
             <div class="grid md:grid-cols-3 gap-6">
                 <!-- 空白佔位符 1 -->
-                <div class="border-2 border-dashed border-stone-200 rounded-2xl h-64 flex flex-col items-center justify-center text-stone-300 hover:border-brand-accent/30 hover:text-brand-accent/50 transition-colors duration-300 bg-stone-50/30">
+                <div class="border-2 border-dashed border-stone-200 bg-white rounded-2xl h-64 flex flex-col items-center justify-center text-stone-300 hover:border-brand-accent/30 hover:text-brand-accent/50 transition-colors duration-300">
                     <i class="fa-regular fa-folder-open text-3xl mb-2"></i>
                     <span class="text-xs font-medium">專案作品預留區</span>
                 </div>
 
                 <!-- 空白佔位符 2 -->
-                <div class="border-2 border-dashed border-stone-200 rounded-2xl h-64 flex flex-col items-center justify-center text-stone-300 hover:border-brand-accent/30 hover:text-brand-accent/50 transition-colors duration-300 bg-stone-50/30">
+                <div class="border-2 border-dashed border-stone-200 bg-white rounded-2xl h-64 flex flex-col items-center justify-center text-stone-300 hover:border-brand-accent/30 hover:text-brand-accent/50 transition-colors duration-300">
                     <i class="fa-regular fa-folder-open text-3xl mb-2"></i>
                     <span class="text-xs font-medium">專案作品預留區</span>
                 </div>
 
                 <!-- 空白佔位符 3 -->
-                <div class="border-2 border-dashed border-stone-200 rounded-2xl h-64 flex flex-col items-center justify-center text-stone-300 hover:border-brand-accent/30 hover:text-brand-accent/50 transition-colors duration-300 bg-stone-50/30">
+                <div class="border-2 border-dashed border-stone-200 bg-white rounded-2xl h-64 flex flex-col items-center justify-center text-stone-300 hover:border-brand-accent/30 hover:text-brand-accent/50 transition-colors duration-300">
                     <i class="fa-regular fa-folder-open text-3xl mb-2"></i>
                     <span class="text-xs font-medium">專案作品預留區</span>
                 </div>
@@ -144,7 +186,7 @@
     </section>
 
     <!-- 專業認證快捷入口 -->
-    <section id="skills" class="py-16 bg-stone-50">
+    <section id="skills" class="py-16 bg-white">
         <div class="max-w-4xl mx-auto px-6">
             <h2 class="text-2xl font-bold mb-2 text-center flex items-center justify-center gap-2 text-stone-800">
                 <i class="fa-solid fa-award text-brand-accent text-xl"></i>
@@ -153,16 +195,17 @@
             <p class="text-center text-sm text-stone-400 mb-10">Microsoft Office Specialist 國際專業軟體認證</p>
             
             <!-- 證照網頁直達捷徑 (大 Banner 卡片) -->
-            <div class="max-w-3xl mx-auto bg-white p-8 md:p-10 rounded-2xl premium-shadow border border-brand-accent/10 flex flex-col md:flex-row items-center justify-between gap-6 hover:border-brand-accent/30 transition-all duration-300">
+            <div class="max-w-3xl mx-auto bg-stone-50 p-8 md:p-10 rounded-2xl premium-shadow border border-brand-accent/10 flex flex-col md:flex-row items-center justify-between gap-6 hover:border-brand-accent/30 transition-all duration-300">
                 <div class="space-y-3 text-center md:text-left">
                     <span class="text-xs font-semibold px-2.5 py-1 bg-brand-accent/10 text-brand-accent rounded-full">MOS 國際認證</span>
                     <h3 class="font-bold text-xl md:text-2xl text-stone-800">專業證照數位展示館</h3>
+                    <!-- 英文拼法已修正為正確之 Certiport，並且精簡移除指定之描述文字 -->
                     <p class="text-sm text-stone-500 leading-relaxed max-w-md">
                         此空間集中展示葉奇昌所考取之 Certiport 官方核發 Microsoft Office Specialist 國際認證。
                     </p>
                 </div>
                 <div class="shrink-0">
-                    <!-- 直接在目前分頁載入網址，符合單頁面跳轉行為 -->
+                    <!-- 已經移除 target="_blank"，點選時直接在目前分頁載入網址 -->
                     <a href="https://jkes48822789-cmyk.github.io/test/index.html" class="px-6 py-3 bg-brand-accent hover:bg-brand-accent/90 text-white font-medium text-sm rounded-xl transition-all shadow-md hover:shadow-lg flex items-center gap-2">
                         <i class="fa-solid fa-arrow-up-right-from-square"></i> 進入數位展示館
                     </a>
@@ -172,7 +215,7 @@
     </section>
 
     <!-- 聯絡方式與直達互動表單 (Contact) -->
-    <section id="contact" class="py-16 border-t border-brand-accent/5">
+    <section id="contact" class="py-16 border-t border-brand-accent/5 bg-stone-50">
         <div class="max-w-4xl mx-auto px-6">
             <h2 class="text-2xl font-bold mb-2 text-center flex items-center justify-center gap-2 text-stone-800">
                 <i class="fa-regular fa-envelope text-brand-accent text-xl"></i>
@@ -195,7 +238,7 @@
                             </div>
                         </div>
                         <div class="flex gap-2">
-                            <!-- 直接寄信：在新分頁載入 Gmail 並自動預填收件人 -->
+                            <!-- 直接寄信：使用新分頁 target="_blank" 完美在 Gmail 載入 compose 畫面，並自動填入收件人 -->
                             <a href="https://mail.google.com/mail/u/0/#inbox?compose=new" target="_blank" onclick="window.open('https://mail.google.com/mail/u/0/?to=jkes48822789@gmail.com&tf=cm', '_blank'); return false;" class="flex-1 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 transition-all text-xs text-center font-medium rounded-lg flex items-center justify-center gap-1">
                                 <i class="fa-regular fa-envelope"></i> 直接寄信
                             </a>
@@ -217,7 +260,7 @@
                             </div>
                         </div>
                         <div class="flex gap-2">
-                            <!-- 撥打電話：手機點選自動調用撥號程式 -->
+                            <!-- 撥打電話：在手機使用者點擊時自動調用電話應用程式 -->
                             <a href="tel:0966667565" class="flex-1 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 transition-all text-xs text-center font-medium rounded-lg flex items-center justify-center gap-1">
                                 <i class="fa-solid fa-phone"></i> 撥打電話
                             </a>
@@ -319,7 +362,7 @@
             const subject = encodeURIComponent(`【應徵/面試洽談】來自葉奇昌網頁平台的聯繫`);
             const body = encodeURIComponent(`您好，我是：${name}\n電子信箱：${email}\n\n洽談內容：\n${message}`);
             
-            // Gmail 官方 Web 深層鏈結：自動在新分頁開啟、定位撰寫視窗，並預先填入收件人、主旨與内文
+            // Gmail 官方 Web 深層鏈結：自動在新分頁開啟並預先填入收件人、主旨與内文
             const gmailUrl = `https://mail.google.com/mail/u/0/?to=jkes48822789@gmail.com&tf=cm&su=${subject}&body=${body}`;
             
             setTimeout(() => {
@@ -329,3 +372,7 @@
     </script>
 </body>
 </html>
+```
+eof
+
+我們已經更新了您的網頁，自我定位的佔位符已呈現在您的姓名下方。您可以點選 **「預覽」 (Preview)** 按鈕即時確認最新的視覺效果！
