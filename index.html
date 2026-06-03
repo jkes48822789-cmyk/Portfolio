@@ -1,6 +1,163 @@
-<!-- ... existing code ... -->
+<!DOCTYPE html>
+<html lang="zh-Hant-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>葉奇昌 | 個人介紹單頁 ‧ 實時追蹤版</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts Noto Sans TC -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Noto Sans TC', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            beige: '#FDFBF7',  // 極致暖米白底色
+                            dark: '#2D2A26',   // 炭灰深色文字
+                            accent: '#8C7853', // 暖大地金屬色
+                            powerpoint: '#D83B01', // PPT 橘
+                            word: '#0078D4',       // Word 藍
+                            excel: '#107C41'       // Excel 綠
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #FDFBF7;
+            scroll-behavior: smooth;
+        }
+        /* 漸層柔和陰影 */
+        .premium-shadow {
+            box-shadow: 0 10px 30px -10px rgba(140, 120, 83, 0.15);
+        }
+        .premium-shadow-sm {
+            box-shadow: 0 4px 15px -3px rgba(140, 120, 83, 0.08);
+        }
+        /* 美化滾動條 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FDFBF7;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(140, 120, 83, 0.4);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="text-brand-dark min-h-screen selection:bg-brand-accent/20 selection:text-brand-accent">
+
+    <!-- 導覽列 -->
+    <nav class="sticky top-0 z-50 bg-brand-beige/80 backdrop-blur-md border-b border-brand-accent/10">
+        <div class="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="#" class="font-bold text-lg tracking-wider text-brand-accent flex items-center gap-2">
+                <span>YEH CHI-CHANG</span>
+            </a>
+            <div class="flex space-x-6 text-sm font-medium">
+                <a href="#about" class="hover:text-brand-accent transition-colors duration-200">關於我</a>
+                <a href="#skills-list" class="hover:text-brand-accent transition-colors duration-200">專業技能</a>
+                <a href="#portfolio" class="hover:text-brand-accent transition-colors duration-200">專案作品</a>
+                <a href="#skills" class="hover:text-brand-accent transition-colors duration-200">專業證照</a>
+                <a href="#contact" class="hover:text-brand-accent transition-colors duration-200">聯繫我</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主視覺 Banner (Hero Section) -->
+    <section class="max-w-4xl mx-auto px-6 py-12 md:py-20 flex flex-col items-center text-center">
+        <!-- 個人頭像容器 (高質感圓形金色細邊框) -->
+        <div class="relative w-36 h-36 md:w-40 md:h-40 rounded-full border-[5px] border-brand-accent/30 premium-shadow mb-6 overflow-hidden bg-stone-100 flex items-center justify-center">
+            <!-- 直接載入指定的官方頭像圖片網址 -->
+            <img 
+                src="https://jkes48822789-cmyk.github.io/Portfolio/Image/profile2.jpg" 
+                alt="葉奇昌" 
+                id="avatar"
+                class="w-full h-full object-cover rounded-full"
+                onerror="handleAvatarError()"
+            >
+            <!-- 備用頭像顯示 -->
+            <div id="avatar-fallback" class="hidden w-full h-full rounded-full bg-gradient-to-br from-brand-accent/20 to-brand-accent/5 flex items-center justify-center">
+                <span class="text-brand-accent font-bold text-3xl">奇昌</span>
+            </div>
+        </div>
+
+        <!-- 姓名與自我定位介紹預留區 -->
+        <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-stone-800">葉奇昌</h1>
+        <p class="text-brand-accent font-medium text-sm md:text-base tracking-widest mt-3">（自我定位介紹內容預留區）</p>
+    </section>
+
+    <!-- 關於我 (About Me) -->
+    <section id="about" class="bg-stone-50 py-16 border-y border-brand-accent/5">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-2xl font-bold mb-10 text-center flex items-center justify-center gap-2 text-stone-800">
+                <i class="fa-regular fa-user text-brand-accent text-xl"></i>
+                關於我 ‧ About Me
+            </h2>
+            
+            <!-- 已清空介紹欄位，完美保留整體視覺平衡，靜候未來提供自傳與經歷 -->
+            <div class="max-w-3xl mx-auto bg-white p-8 md:p-12 rounded-2xl border border-brand-accent/10 premium-shadow text-center min-h-[220px] flex flex-col items-center justify-center">
+                <i class="fa-regular fa-pen-to-square text-brand-accent/40 text-3xl mb-3"></i>
+                <p class="text-sm text-stone-400 font-medium tracking-wider">關於我介紹內容預留區</p>
+                <p class="text-xs text-stone-300 mt-1">（後續提供內容後將會在此呈現您的專屬自傳與經歷介紹）</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 專業技能 (Professional Skills) -->
+    <section id="skills-list" class="py-16 bg-white">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-2xl font-bold mb-10 text-center flex items-center justify-center gap-2 text-stone-800">
+                <i class="fa-solid fa-laptop-code text-brand-accent text-xl"></i>
+                專業技能 ‧ Skills
+            </h2>
+            
+            <!-- 專業技能 3 格空白佔位符 -->
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- 佔位符 1 -->
+                <div class="border-2 border-dashed border-stone-200 bg-stone-50/30 rounded-2xl p-8 flex flex-col items-center justify-center text-center min-h-[220px] hover:border-brand-accent/30 hover:bg-white transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-full bg-brand-accent/5 flex items-center justify-center mb-4 text-brand-accent/60 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-screwdriver-wrench text-xl"></i>
+                    </div>
+                    <span class="text-sm font-semibold text-stone-600 mb-1">技能領域一</span>
+                    <span class="text-xs text-stone-400">（內容預留區）</span>
+                </div>
+
+                <!-- 佔位符 2 -->
+                <div class="border-2 border-dashed border-stone-200 bg-stone-50/30 rounded-2xl p-8 flex flex-col items-center justify-center text-center min-h-[220px] hover:border-brand-accent/30 hover:bg-white transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-full bg-brand-accent/5 flex items-center justify-center mb-4 text-brand-accent/60 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-gears text-xl"></i>
+                    </div>
+                    <span class="text-sm font-semibold text-stone-600 mb-1">技能領域二</span>
+                    <span class="text-xs text-stone-400">（內容預留區）</span>
+                </div>
+
+                <!-- 佔位符 3 -->
+                <div class="border-2 border-dashed border-stone-200 bg-stone-50/30 rounded-2xl p-8 flex flex-col items-center justify-center text-center min-h-[220px] hover:border-brand-accent/30 hover:bg-white transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-full bg-brand-accent/5 flex items-center justify-center mb-4 text-brand-accent/60 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-display text-xl"></i>
+                    </div>
+                    <span class="text-sm font-semibold text-stone-600 mb-1">技能領域三</span>
+                    <span class="text-xs text-stone-400">（內容預留區）</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- 專案作品 (Portfolio) -->
-    <section id="portfolio" class="py-16 bg-white">
+    <section id="portfolio" class="py-16 bg-stone-50 border-t border-brand-accent/5">
         <div class="max-w-4xl mx-auto px-6">
             <h2 class="text-2xl font-bold mb-10 text-center flex items-center justify-center gap-2 text-stone-800">
                 專案作品
@@ -26,16 +183,216 @@
                         </div>
                     </div>
                     <div class="p-5 pt-0">
-                        <!-- 連結至指定的 Railway 生產環境，新增 target="_blank" 於新分頁開啟 -->
-                        <a href="https://dashboard-production-1e90.up.railway.app/" target="_blank" class="w-full py-2 bg-stone-100 hover:bg-brand-accent hover:text-white text-stone-600 text-xs text-center font-medium rounded-lg transition-all flex items-center justify-center gap-1">
+                        <!-- 連結：已設定 target="_blank" 與 rel="noopener noreferrer"，點擊時會在外部新分頁開啟 -->
+                        <a href="https://dashboard-production-1e90.up.railway.app/" target="_blank" rel="noopener noreferrer" class="w-full py-2 bg-stone-100 hover:bg-brand-accent hover:text-white text-stone-600 text-xs text-center font-medium rounded-lg transition-all flex items-center justify-center gap-1">
                             <i class="fa-solid fa-arrow-up-right-from-square"></i> 進入任務看板
                         </a>
                     </div>
                 </div>
 
                 <!-- 空白佔位符 2 -->
-<!-- ... existing code ... -->
+                <div class="border-2 border-dashed border-stone-200 bg-white rounded-2xl h-full min-h-[320px] flex flex-col items-center justify-center text-stone-300 hover:border-brand-accent/30 hover:text-brand-accent/50 transition-colors duration-300">
+                    <i class="fa-regular fa-folder-open text-3xl mb-2"></i>
+                    <span class="text-xs font-medium">專案作品預留區</span>
+                </div>
+
+                <!-- 空白佔位符 3 -->
+                <div class="border-2 border-dashed border-stone-200 bg-white rounded-2xl h-full min-h-[320px] flex flex-col items-center justify-center text-stone-300 hover:border-brand-accent/30 hover:text-brand-accent/50 transition-colors duration-300">
+                    <i class="fa-regular fa-folder-open text-3xl mb-2"></i>
+                    <span class="text-xs font-medium">專案作品預留區</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 專業認證快捷入口 -->
+    <section id="skills" class="py-16 bg-white">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-2xl font-bold mb-2 text-center flex items-center justify-center gap-2 text-stone-800">
+                <i class="fa-solid fa-award text-brand-accent text-xl"></i>
+                專業認證 ‧ Certification
+            </h2>
+            <p class="text-center text-sm text-stone-400 mb-10">Microsoft Office Specialist 國際專業軟體認證</p>
+            
+            <!-- 證照網頁直達捷徑 (大 Banner 卡片) -->
+            <div class="max-w-3xl mx-auto bg-stone-50 p-8 md:p-10 rounded-2xl premium-shadow border border-brand-accent/10 flex flex-col md:flex-row items-center justify-between gap-6 hover:border-brand-accent/30 transition-all duration-300">
+                <div class="space-y-3 text-center md:text-left">
+                    <span class="text-xs font-semibold px-2.5 py-1 bg-brand-accent/10 text-brand-accent rounded-full">MOS 國際認證</span>
+                    <h3 class="font-bold text-xl md:text-2xl text-stone-800">專業證照數位展示館</h3>
+                    <!-- 英文拼法已修正為正確之 Certiport，並且精簡移除指定之描述文字 -->
+                    <p class="text-sm text-stone-500 leading-relaxed max-w-md">
+                        此空間集中展示葉奇昌所考取之 Certiport 官方核發 Microsoft Office Specialist 國際認證。
+                    </p>
+                </div>
+                <div class="shrink-0">
+                    <!-- 已經移除 target="_blank"，點選時直接在目前分頁載入網址 -->
+                    <a href="https://jkes48822789-cmyk.github.io/test/index.html" class="px-6 py-3 bg-brand-accent hover:bg-brand-accent/90 text-white font-medium text-sm rounded-xl transition-all shadow-md hover:shadow-lg flex items-center gap-2">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> 進入數位展示館
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 聯絡方式與直達互動表單 (Contact) -->
+    <section id="contact" class="py-16 border-t border-brand-accent/5 bg-stone-50">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-2xl font-bold mb-2 text-center flex items-center justify-center gap-2 text-stone-800">
+                <i class="fa-regular fa-envelope text-brand-accent text-xl"></i>
+                聯絡方式 ‧ Contact
+            </h2>
+            <p class="text-center text-sm text-stone-400 mb-10">歡迎隨時與我聯繫，期待與您的合作！</p>
+            
+            <div class="grid md:grid-cols-5 gap-8">
+                <!-- 聯絡資訊 -->
+                <div class="md:col-span-2 flex flex-col justify-center space-y-6">
+                    <!-- 信箱卡片 -->
+                    <div class="bg-white p-6 rounded-2xl premium-shadow border border-brand-accent/5">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-brand-accent/10 flex items-center justify-center text-brand-accent shrink-0">
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xs text-stone-400">電子郵件</h3>
+                                <p class="font-semibold text-stone-800 text-sm break-all">jkes48822789@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-2">
+                            <!-- 直接寄信：使用新分頁 target="_blank" 完美在 Gmail 載入 compose 畫面，並自動填入收件人 -->
+                            <a href="https://mail.google.com/mail/u/0/#inbox?compose=new" target="_blank" onclick="window.open('https://mail.google.com/mail/u/0/?to=jkes48822789@gmail.com&tf=cm', '_blank'); return false;" class="flex-1 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 transition-all text-xs text-center font-medium rounded-lg flex items-center justify-center gap-1">
+                                <i class="fa-regular fa-envelope"></i> 直接寄信
+                            </a>
+                            <button onclick="copyToClipboard('jkes48822789@gmail.com', 'Email')" class="px-3 py-2 border border-stone-200 hover:bg-stone-50 rounded-lg text-stone-500 text-xs transition-colors" title="複製信箱">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 電話卡片 -->
+                    <div class="bg-white p-6 rounded-2xl premium-shadow border border-brand-accent/5">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-brand-accent/10 flex items-center justify-center text-brand-accent shrink-0">
+                                <i class="fa-solid fa-mobile-screen-button"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xs text-stone-400">手機號碼</h3>
+                                <p class="font-semibold text-stone-800 text-sm">0966-667-565</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-2">
+                            <!-- 撥打電話：在手機使用者點擊時自動調用電話應用程式 -->
+                            <a href="tel:0966667565" class="flex-1 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 transition-all text-xs text-center font-medium rounded-lg flex items-center justify-center gap-1">
+                                <i class="fa-solid fa-phone"></i> 撥打電話
+                            </a>
+                            <button onclick="copyToClipboard('0966667565', '手機號碼')" class="px-3 py-2 border border-stone-200 hover:bg-stone-50 rounded-lg text-stone-500 text-xs transition-colors" title="複製電話號碼">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 聯絡表單 -->
+                <div class="md:col-span-3">
+                    <form onsubmit="handleFormSubmit(event)" class="bg-white p-6 rounded-2xl premium-shadow border border-brand-accent/5 space-y-4">
+                        <h3 class="font-bold text-stone-800 text-base mb-2">快速留言給我</h3>
+                        <div>
+                            <label class="block text-xs text-stone-400 mb-1">您的姓名 / 貴司名稱</label>
+                            <input type="text" id="contact-name" required class="w-full px-4 py-2 bg-stone-50 border border-stone-200 rounded-xl focus:outline-none focus:border-brand-accent/50 text-sm transition-colors" placeholder="例：王經理 / ○○股份有限公司">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-stone-400 mb-1">您的電子信箱</label>
+                            <input type="email" id="contact-email" required class="w-full px-4 py-2 bg-stone-50 border border-stone-200 rounded-xl focus:outline-none focus:border-brand-accent/50 text-sm transition-colors" placeholder="例：hr@company.com">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-stone-400 mb-1">洽談內容</label>
+                            <textarea id="contact-message" rows="3" required class="w-full px-4 py-2 bg-stone-50 border border-stone-200 rounded-xl focus:outline-none focus:border-brand-accent/50 text-sm resize-none transition-colors" placeholder="我想邀約面試/進一步洽談..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-2.5 bg-brand-accent hover:bg-brand-accent/90 text-white font-medium text-sm rounded-xl transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2">
+                            <i class="fa-regular fa-paper-plane"></i> 傳送留言
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁尾 (Footer) -->
+    <footer class="bg-stone-900 text-stone-400 py-8 text-center">
+        <div class="max-w-4xl mx-auto px-6 text-xs space-y-2">
+            <p class="text-stone-300">葉奇昌 ‧ 數位履歷個人介紹單頁</p>
+            <p>© 2026 Yee Chi-Chang. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- 全局提示框 (Toast) -->
+    <div id="toast" class="fixed bottom-5 left-1/2 -translate-x-1/2 bg-stone-900/90 text-white text-xs px-4 py-2.5 rounded-full shadow-xl flex items-center gap-2 transition-all duration-300 transform translate-y-20 opacity-0 pointer-events-none z-50">
+        <i class="fa-solid fa-circle-check text-green-400"></i>
+        <span id="toast-text">已成功複製</span>
+    </div>
+
+    <script>
+        // 大頭貼加載錯誤備用方案
+        function handleAvatarError() {
+            const avatarImg = document.getElementById('avatar');
+            const fallbackDiv = document.getElementById('avatar-fallback');
+            if (avatarImg && fallbackDiv) {
+                avatarImg.style.display = 'none';
+                fallbackDiv.classList.remove('hidden');
+            }
+        }
+
+        // 複製至剪貼簿功能
+        function copyToClipboard(text, type) {
+            const tempInput = document.createElement('input');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            showToast(`已複製您的 ${type}：${text}`);
+        }
+
+        // 顯示 Toast 提示
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastText = document.getElementById('toast-text');
+            if (toast && toastText) {
+                toastText.innerText = message;
+                toast.classList.remove('translate-y-20', 'opacity-0');
+                toast.classList.add('translate-y-0', 'opacity-100');
+                
+                setTimeout(() => {
+                    toast.classList.remove('translate-y-0', 'opacity-100');
+                    toast.classList.add('translate-y-20', 'opacity-0');
+                }, 3000);
+            }
+        }
+
+        // 提交表單處理 (動態擷取使用者填寫內容並自動進入 Gmail 撰寫新信件)
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('contact-name').value;
+            const email = document.getElementById('contact-email').value;
+            const message = document.getElementById('contact-message').value;
+
+            showToast("留言成功！正在為您開啟 Gmail 撰寫信件...");
+
+            // 編譯信件主旨與格式化內容
+            const subject = encodeURIComponent(`【應徵/面試洽談】來自葉奇昌網頁平台的聯繫`);
+            const body = encodeURIComponent(`您好，我是：${name}\n電子信箱：${email}\n\n洽談內容：\n${message}`);
+            
+            // Gmail 官方 Web 深層鏈結：自動在新分頁開啟並預先填入收件人、主旨與内文
+            const gmailUrl = `https://mail.google.com/mail/u/0/?to=jkes48822789@gmail.com&tf=cm&su=${subject}&body=${body}`;
+            
+            setTimeout(() => {
+                window.open(gmailUrl, '_blank');
+            }, 1200);
+        }
+    </script>
+</body>
+</html>
 ```
 eof
 
-我們已順利完成修改。您可以點擊右上角的 **「預覽」 (Preview)** 測試點擊專案作品，它將會順暢地在新分頁中為您開啟您的任務看板網站！
+我們已經更新完畢，成功將「個人化任務看板」的開啟方式設定為**在新分頁中打開**（透過 `target="_blank"` 屬性）。您可以點擊右側的 **「預覽」 (Preview)** 按鈕，接著至專案作品區點選該連結來親自進行測試！
